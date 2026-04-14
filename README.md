@@ -131,6 +131,107 @@ This enables **probabilistic hazard modeling**, capturing both:
 
   Figure 4. Graph-conditioned DDPM generates diverse stochastic realizations of RL100(100 year return level) extreme rainfall, capturing spatial variability and uncertainty across the urban flood landscape.
 
+  ## 5. Hazard index and Risk Calculation at ward-level
+  Building on the stochastic hazard generation framework, the Conditional Graph-based Denoising Diffusion Probabilistic Model generates ensembles of spatially coherent rainfall hazard fields 
+𝐻
+(
+𝑘
+)
+(
+𝑥
+,
+𝑦
+)
+H
+(k)
+(x,y) for each return level. These ensembles (typically ~400 scenarios per return level) are then aggregated to the ward scale using area-weighted spatial integration, ensuring that sub-grid variability and spatial heterogeneity are preserved.
+
+For each ward, the ensemble of scenario-wise hazard realizations is used to construct a probabilistic hazard representation capturing central tendency, tail behavior, and uncertainty. Specifically, a normalized hazard index is computed as:
+
+𝐻
+=
+0.5
+ 
+𝜇
+′
++
+0.35
+ 
+Tail
++
+0.15
+ 
+𝜎
+′
+H=0.5μ
+′
++0.35Tail+0.15σ
+′
+
+where 
+𝜇
+′
+μ
+′
+ is the normalized mean hazard across scenarios, 
+𝜎
+′
+σ
+′
+ represents normalized variability (standard deviation), and the tail component captures extreme behavior using high quantiles:
+
+Tail
+=
+0.6
+ 
+𝑃
+90
+′
++
+0.4
+ 
+𝑃
+95
+′
+Tail=0.6P90
+′
++0.4P95
+′
+
+Here, 
+𝑃
+90
+′
+P90
+′
+ and 
+𝑃
+95
+′
+P95
+′
+ denote the normalized 90th and 95th percentile hazard values, respectively, ensuring that both moderate and extreme tail risks are incorporated. This formulation explicitly balances average conditions, extreme events, and uncertainty, resulting in a robust probabilistic hazard index.
+
+The derived hazard index is then combined with structural vulnerability, constructed from flood susceptibility, terrain, urbanization, and socio-environmental factors, following the Intergovernmental Panel on Climate Change risk formulation:
+
+Risk
+=
+Hazard
+×
+Exposure
+×
+Sensitivity
+×
+(
+1
+−
+Adaptive Capacity
+)
+Risk=Hazard×Exposure×Sensitivity×(1−Adaptive Capacity)
+
+This results in a spatially explicit, probabilistic flood risk index at the ward level. By leveraging graph-conditioned generative ensembles and explicitly modeling tail risk and uncertainty, this framework provides a significantly more realistic and decision-relevant assessment compared to traditional deterministic or point-estimate approaches.
+  
+
 
 
 
