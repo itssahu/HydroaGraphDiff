@@ -132,6 +132,18 @@ This enables **probabilistic hazard modeling**, capturing both:
 
 Figure.5: Graph-conditioned DDPM generates diverse stochastic realizations of RL100(100 year return level) extreme rainfall, capturing spatial variability and uncertainty across the urban flood landscape.
 
+### Model Evaluation/ Performance Comparison
+
+<img width="1085" height="553" alt="image" src="https://github.com/user-attachments/assets/d40fbc44-2d3e-4dda-98ba-c9d0d69e737c" />
+
+Figure. 5.1: Graph-based generative models (Graph-DDPM and Graph-Conditioned DDPM) consistently outperform spatially-aware statistical baselines (EVT + Copula, GRF) in both distributional realism and spatial structure preservation across return levels. The graph-conditioned variant achieves the best performance, demonstrating superior ability to capture nonlinear dependencies and spatial heterogeneity in extreme rainfall fields.
+
+To ensure a fair comparison, all baseline methods were adapted to incorporate spatial dependencies. **The Extreme Value Theory (EVT) + Copula model** was extended with spatial dependence through copula-based joint modeling, while the **Gaussian Random Field (GRF)** explicitly captures spatial correlation under Gaussian assumptions. These approaches represent strong statistical and geostatistical baselines for spatial hazard generation, but remain limited in modeling nonlinear dependencies and complex spatial heterogeneity in extreme events.
+
+In contrast, the **Graph-Based Denoising Diffusion Probabilistic Model (Graph-DDPM)** learns spatial structure directly through graph-aware generative modeling, while the **Graph-Conditioned DDPM** further enhances this by incorporating explicit conditioning on geospatial features and enforcing spatial consistency via graph constraints. This progression allows the models to better capture both **distributional properties and spatial dependencies** of extreme rainfall.
+
+The results show that although spatial extensions improve classical methods, **both Graph-DDPM and Graph-Conditioned DDPM consistently outperform EVT + Copula and GRF**, with the conditioned variant achieving the best performance across all return levels in terms of both distributional realism and spatial structure preservation. This highlights the advantage of generative, graph-based approaches for modeling complex, high-impact climate extremes.
+
 ### Hazard index calculation at ward-level
 
 Building on the stochastic hazard generation framework, the **Graph Conditioned DDPM** generates ensembles of spatially coherent rainfall hazard fields H<sup>(k)</sup>(x, y) for each return level. These ensembles (typically ~400 scenarios per return level in our case) are then aggregated to the ward scale using area-weighted spatial integration, ensuring that sub-grid variability and spatial heterogeneity are preserved.
