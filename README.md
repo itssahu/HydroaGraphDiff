@@ -46,10 +46,72 @@ graph-based constraints. The panels show standardized hazard anomaly fields, whe
 values indicate above-average rainfall and negative values indicate below-average rainfall at each
 location. 
 
-Together, these results illustrate the core DDPM mechanism within the HydroGraphDiff framework. In the forward process, the structured EVT-conditioned hazard field $x_0$ is progressively corrupted by Gaussian noise according to a known schedule, producing intermediate noisy states $x_t \sim \mathcal{N}(\sqrt{\bar{\alpha}_t}x_0, (1-\bar{\alpha}_t)I)$. As $t$ increases, spatial structure is gradually destroyed, and the field approaches an isotropic Gaussian distribution.
-The Conditional Graph DDPM is trained to learn the noise function $\epsilon_\theta(x_t, t, c, G)$, which implicitly models the conditional distribution of noise given the corrupted field, diffusion timestep, geospatial conditioning variables ($c$), and spatial graph structure ($G$). The model leverages a UNet-style encoder–decoder to fuse multi-channel inputs ($x_t, c, pos$) while incorporating temporal embeddings and graph-aware spatial constraints via the Laplacian operator.
-During reverse diffusion, the model iteratively removes the estimated noise component from $x_t$, reconstructing spatial structure step-by-step. Importantly, stochasticity is preserved through injected noise $z \sim \mathcal{N}(0,I)$ at each timestep, ensuring that the reverse process samples from the learned data distribution rather than producing a single deterministic output. 
-As a result, the framework generates multiple stochastic hazard realizations $x_0^{(s)}$, each representing a physically consistent extreme rainfall scenario conditioned on terrain, urban characteristics, and climate-driven extremes. This enables probabilistic hazard modeling, capturing both spatial dependencies and uncertainty in extreme event generation.
+Together, these results illustrate the core DDPM mechanism within the HydroGraphDiff framework.
+
+In the forward process, the structured EVT-conditioned hazard field $x_0$ is progressively corrupted by Gaussian noise according to a known schedule, producing intermediate noisy states:
+
+$$
+x_t \sim \mathcal{N}(\sqrt{\bar{\alpha}_t} \, x_0,\; (1 - \bar{\alpha}_t) I)
+$$
+
+As $t$ increases, spatial structure is gradually destroyed, and the field approaches an isotropic Gaussian distribution.
+
+---
+
+The Conditional Graph DDPM is trained to learn the noise function:
+
+$$
+\epsilon_\theta(x_t, t, c, G)
+$$
+
+which implicitly models the conditional distribution of noise given:
+- the corrupted field $x_t$
+- diffusion timestep $t$
+- geospatial conditioning variables $c$
+- spatial graph structure $G$
+
+---
+
+The model leverages a UNet-style encoder–decoder to fuse multi-channel inputs:
+
+$$
+(x_t, c, \text{pos})
+$$
+
+while incorporating:
+- temporal embeddings
+- graph-aware spatial constraints via the Laplacian operator
+
+---
+
+During reverse diffusion, the model iteratively removes the estimated noise component from $x_t$, reconstructing spatial structure step-by-step.
+
+Stochasticity is preserved through injected noise:
+
+$$
+z \sim \mathcal{N}(0, I)
+$$
+
+at each timestep, ensuring sampling from the learned data distribution rather than producing a deterministic output.
+
+---
+
+As a result, the framework generates multiple stochastic hazard realizations:
+
+$$
+x_0^{(s)}
+$$
+
+each representing a physically consistent extreme rainfall scenario conditioned on:
+- terrain
+- urban characteristics
+- climate-driven extremes
+
+---
+
+This enables **probabilistic hazard modeling**, capturing both:
+- spatial dependencies  
+- uncertainty in extreme event generation
 
 
 
