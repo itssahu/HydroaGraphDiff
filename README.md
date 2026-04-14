@@ -16,7 +16,7 @@ CMIP6(MIROC6-historical, ssp245, ssp585)(2021–2050)
 ## 2. Architecture
 <img width="706" height="707" alt="image" src="https://github.com/user-attachments/assets/f649a0e3-a7dc-4819-a2f1-b65e5b8b642e" />
 
-Figure 1. Final architecture of HydroGraphDiff following a standard hazard–vulnerability–risk framework.
+Figure.1: Final architecture of HydroGraphDiff following a standard hazard–vulnerability–risk framework.
 
 Hazard is derived from ERA5 and IMD rainfall using quantile-mapped bias correction and EVT-based extreme modeling to estimate extreme rainfall magnitudes (return levels). 
 A spatial graph $G=(V,E,W)$ is constructed, where nodes $V$ represent grid cells(wards), edges $E$ encode spatial adjacency, and weights $W$ capture distance, terrain, and drainage influence. This graph is first used in a graph diffusion step to propagate extreme rainfall across neighboring regions, producing spatially coherent hazard fields that reflect physical spillover and connectivity.
@@ -25,7 +25,7 @@ Vulnerability is constructed from geographic features (terrain, infrastructure, 
 
 ## 3. Bias Correction, Extreme Value Theorem and Graph Diffusion
 
-Figure 2: Extreme rainfall modeling and spatial enhancement pipeline
+Figure.2: Extreme rainfall modeling and spatial enhancement pipeline
 <img width="1500" height="787" alt="image" src="https://github.com/user-attachments/assets/9f59a9c5-5d77-436f-b24c-134f7b9dea89" />
 <img width="1086" height="855" alt="image" src="https://github.com/user-attachments/assets/dd6e9694-6b69-45e8-bc55-ed0705342e6e" />
 <img width="1500" height="675" alt="image" src="https://github.com/user-attachments/assets/14a0e4d7-01fc-4b15-9b21-13a833dd7f37" />
@@ -49,7 +49,7 @@ Figure 2: Extreme rainfall modeling and spatial enhancement pipeline
 ## 4. Graph Conditioned DDPM (Denoising Diffusion Probabilistic Model) 
 <img width="679" height="725" alt="image" src="https://github.com/user-attachments/assets/50bd2c24-b010-4fc2-b769-e4051d4d0ecf" />
 
-Figure 2. Final architecture of the Graph Conditioned DDPM in HydroGraphDiff. A for-
+Figure.2: Final architecture of the Graph Conditioned DDPM in HydroGraphDiff. A for-
 ward diffusion process progressively corrupts EVT-conditioned hazard fields into Gaussian noise.
 A UNet-based neural network learns to predict noise conditioned on geospatial features (c), posi-
 tional encoding, temporal embeddings (t), and spatial graph structure (G = (V, E, W )), where V
@@ -63,7 +63,7 @@ data and underlying spatial dependencies.
 
 <img width="1712" height="337" alt="reverse" src="https://github.com/user-attachments/assets/6fc7e116-6bc2-472f-91d7-4e5cce035793" />
 
-Figure 3. Diffusion dynamics in HydroGraphDiff for RL100 extreme rainfall scenario.
+Figure.3: Diffusion dynamics in HydroGraphDiff for RL100 extreme rainfall scenario.
 Top: Forward diffusion progressively corrupts the EVT-conditioned hazard field into noise, de-
 stroying spatial structure as timestep increases. Bottom: Reverse diffusion using the Conditional
 Graph DDPM reconstructs spatially coherent hazard fields, guided by geospatial conditioning and
@@ -130,7 +130,7 @@ This enables **probabilistic hazard modeling**, capturing both:
 
   <img width="1500" height="695" alt="image" src="https://github.com/user-attachments/assets/f4500387-bc20-4323-a16d-3fd4e932b8c7" />
 
-  Figure 4. Graph-conditioned DDPM generates diverse stochastic realizations of RL100(100 year return level) extreme rainfall, capturing spatial variability and uncertainty across the urban flood landscape.
+Figure.4: Graph-conditioned DDPM generates diverse stochastic realizations of RL100(100 year return level) extreme rainfall, capturing spatial variability and uncertainty across the urban flood landscape.
 
 ### Hazard index calculation at ward-level
 
@@ -241,7 +241,7 @@ Structural vulnerability incorporates adaptive capacity into the risk formulatio
 
 <img width="1286" height="1125" alt="image" src="https://github.com/user-attachments/assets/453621df-f042-42c3-8f72-c7e9addcc653" />
 
-Figure 5. Ward-level flood vulnerability components for Hyderabad, showing spatial patterns of adaptive capacity, sensitivity, potential impact, and resulting structural vulnerability.
+Figure.5: Ward-level flood vulnerability components for Hyderabad, showing spatial patterns of adaptive capacity, sensitivity, potential impact, and resulting structural vulnerability.
 Insight: High vulnerability emerges where elevated sensitivity and exposure coincide with low adaptive capacity, highlighting flood risk hotspots along the Musi river corridor.
 
 ## 6. Flood Risk(Impact) Formulation at ward level
