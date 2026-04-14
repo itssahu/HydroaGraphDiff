@@ -144,7 +144,7 @@ $$
 where \( \mu' \) is the normalized mean hazard across scenarios, \( \sigma' \) represents normalized variability (standard deviation), and the tail component captures extreme behavior using high quantiles:
 
 $$
-\text{Tail} = 0.6\\P90' + 0.4\\P95'
+\text{Tail} = 0.6P90' + 0.4P95'
 $$
 
 Here, \( P90' \) and \( P95' \) denote the normalized 90th and 95th percentile hazard values, respectively, ensuring that both moderate and extreme tail risks are incorporated. This formulation explicitly balances average conditions, extreme events, and uncertainty, resulting in a robust probabilistic hazard index.
