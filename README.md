@@ -394,7 +394,7 @@ Insight: Climate change systematically amplifies flood risk and its spatial hete
 
 ## 🌍 Climate-Conditioned Catastrophe Risk Modeling (EP Curves, Loss Metrics & Spatial Impact)
 
-This section presents a full probabilistic catastrophe modeling pipeline integrating generative hazard ensembles, exposure modeling, vulnerability functions, and Monte Carlo simulation to quantify flood risk under baseline and future climate scenarios (CMIP6 – SSP245, SSP585).
+This section presents a full probabilistic catastrophe modeling pipeline integrating generative hazard ensembles, exposure modeling, vulnerability functions (damage curves) and Monte Carlo simulation for probabilistic flood risk estimation under baseline and future climate scenarios (CMIP6 – SSP245, SSP585).
 
 ---
 
@@ -433,7 +433,7 @@ Units: ₹ Millions
 
 ---
 
-#  3. Damage Function (Hazard → Damage)
+#  3. Vulnerability Function (Damage Function: Hazard → Damage)
 
 A logistic vulnerability curve converts hazard intensity into fractional damage:
 
@@ -523,7 +523,11 @@ P(RL) = {10: 0.6, 25: 0.25, 50: 0.1, 100: 0.05}
 
 ---
 
-# 9. Annual Loss Simulation
+# 9. Monte Carlo Simulation of Annual Loss
+
+A Monte Carlo framework is used to simulate stochastic event sequences and aggregate annual losses over T = 10,000 synthetic years.
+
+Each simulation samples event frequency, hazard intensity, vulnerability response, and loss uncertainty to generate a full probabilistic loss distribution.
 
 Annual loss:
 
