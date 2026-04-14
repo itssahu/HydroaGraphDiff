@@ -234,7 +234,12 @@ Structural vulnerability incorporates adaptive capacity into the risk formulatio
 - **Exposure (E):** Population at risk  
 - **Adaptive Capacity (AC):** Infrastructure and response capability  
 - **Potential Impact:** Raw flood impact potential  
-- **Structural Vulnerability (V):** Realistic vulnerability accounting for resilience  
+- **Structural Vulnerability (V):** Realistic vulnerability accounting for resilience
+
+<img width="1286" height="1125" alt="image" src="https://github.com/user-attachments/assets/453621df-f042-42c3-8f72-c7e9addcc653" />
+
+Figure 5. Ward-level flood vulnerability components for Hyderabad, showing spatial patterns of adaptive capacity, sensitivity, potential impact, and resulting structural vulnerability.
+Insight: High vulnerability emerges where elevated sensitivity and exposure coincide with low adaptive capacity, highlighting flood risk hotspots along the Musi river corridor.
 
 This formulation ensures a spatially explicit, interpretable, and physically consistent assessment of ward-level flood vulnerability.
 
