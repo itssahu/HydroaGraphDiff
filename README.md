@@ -311,7 +311,7 @@ where:
 - H<sub>w</sub><sup>(k)</sup> = k-th scenario  
 - Σ = summation over scenarios  
 - I(·) = indicator function  
-
+- N = total number of generated hazard scenarios (ensemble size, typically ~400 in this framework)
 ---
 
 ##  Future Climate Risk Evolution (CMIP6 — MIROC6, SSP245, SSP585)
@@ -377,4 +377,26 @@ Classification:
 ## Pipeline
 
 **H<sup>(k)</sup>(x, y) → H<sub>w</sub> → R<sub>w</sub> → P<sub>w</sub> → A<sub>w</sub> → D<sub>w</sub>**
+
+<img width="1500" height="861" alt="image" src="https://github.com/user-attachments/assets/0aaecafa-bba4-4ee1-9a85-90a2ad712931" />
+
+Figure: Ward-level flood risk (impact) and probability of extreme flood events (likelihood) across increasing return periods (10–100 years) under observed climate (2001–2024).
+
+Insight: Risk intensity and extreme-event likelihood both amplify with higher return levels, with hotspots consistently concentrated along the Musi river corridor.
+
+<img width="1196" height="1125" alt="image" src="https://github.com/user-attachments/assets/00d703ae-860f-419e-954e-57be55b9e52f" />
+
+Figure: Future climate-driven evolution of ward-level flood risk for the 100-year return period under CMIP6 projections (MIROC6) across SSP245 and SSP585 scenarios. The top row shows absolute flood risk (impact), followed by changes in risk (ΔRisk), changes in extreme event likelihood (ΔProbability), climate amplification (risk ratio: Future/Baseline), and final decision zones derived from a composite score 
+𝐷
+=
+𝑅
+⋅
+𝑃
+⋅
+𝐴
+D=R⋅P⋅A.
+
+Insight: Climate change systematically amplifies flood risk and its spatial heterogeneity, with SSP585 exhibiting stronger intensification and variability compared to SSP245. While some regions show reductions (blue) due to localized shifts in rainfall patterns, most high-risk wards—especially along the Musi river corridor—experience increased risk and/or likelihood. Climate amplification maps highlight where future hazards disproportionately escalate relative to baseline conditions, and the final decision zones translate these compounded effects into actionable priorities (Act/Monitor/Low), enabling targeted, risk-informed climate adaptation planning.
+
+
 
