@@ -3,13 +3,15 @@
 HydroGraphDiff is an end-to-end probabilistic flood risk and catastrophe modeling system developed for the Hyderabad (Musi basin) region. The project integrates geospatial data, extreme value theory (EVT), graph-based spatial modeling, and generative AI (Diffusion Models) to simulate flood hazards and quantify climate-driven financial risk at ward-level resolution.
 
 ## 1. Data Used
-IMERG (satellite rainfall), 
-IMD (gauge rainfall), 
+IMERG (satellite rainfall)(2001–2024), 
+IMD (gauge rainfall)(2001–2024), 
 DEM (elevation, slope), 
 ESA WorldCover (urbanization), 
 OSM (roads, hospitals), 
 WorldPop (population),
-CMIP6(MIROC6-historical, ssp245, ssp585)
+CMIP6(MIROC6-historical, ssp245, ssp585)(2021–2050)
+
+- **AOI (Area of Interest):** Hyderabad city and Musi river sub-basin (ward-level analysis)
 
 ## 2. Architecture
 <img width="706" height="707" alt="image" src="https://github.com/user-attachments/assets/f649a0e3-a7dc-4819-a2f1-b65e5b8b642e" />
