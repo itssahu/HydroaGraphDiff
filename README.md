@@ -695,8 +695,9 @@ Climate change amplifies flood risk nonlinearly, with disproportionate escalatio
 - **Simplified hydrodynamics**  
   The framework does not explicitly solve physical flow equations, so detailed flood dynamics (flow routing, inundation depth) are approximated via graph diffusion.
 
-- **Approximate climate scaling (CMIP6 SSPs)**  
-  Future impacts are modeled using scaling factors, which may not fully capture changes in rainfall structure, storm dynamics, or compound events.
+- **Climate projection uncertainty (CMIP6 SSPs)**  
+  Future rainfall extremes are scaled using CMIP6, but reliance on a single GCM (MIROC6) introduces model-specific bias and limits robustness.
+  Using a multi-model ensemble would capture inter-model variability, reduce bias, and enable more reliable probabilistic climate risk estimation.
 
 - **Static exposure and vulnerability assumptions**  
   Asset values and vulnerability are treated as constant, whereas in reality they evolve with urbanization, infrastructure, and adaptation.
@@ -716,8 +717,8 @@ Addressing these limitations would involve:
 - **Dynamic exposure and vulnerability modeling**  
   Develop time-evolving representations of population, infrastructure, land-use change, and adaptive capacity to reflect realistic future risk scenarios.
 
-- **Time-resolved climate projections (beyond scaling approaches)**  
-  Utilize downscaled CMIP6 simulations to capture changes in rainfall intensity, duration, temporal structure, and compound extreme events.
+- **Time-resolved climate projections (multi-model, beyond scaling approaches)**  
+  Utilize dynamically downscaled CMIP6 multi-model ensembles to capture changes in rainfall intensity, duration, temporal structure, inter-model variability, and compound extreme events, moving beyond static scaling    methods.
 
 - **Improved generative modeling of extreme tails**  
   Enhance robustness of diffusion models using tail-focused training, hybrid EVT–deep learning approaches, and larger datasets to better represent rare, high-impact events.
