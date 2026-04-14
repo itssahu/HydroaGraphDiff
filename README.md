@@ -13,7 +13,8 @@ CMIP6(MIROC6-historical, ssp245, ssp585)
 
 ## 2. Architecture
 <img width="706" height="707" alt="image" src="https://github.com/user-attachments/assets/f649a0e3-a7dc-4819-a2f1-b65e5b8b642e" />
-Figure 1. Final architecture of \textbf{HydroGraphDiff} following a standard hazard–vulnerability–risk framework.
+
+Figure 1. Final architecture of HydroGraphDiff following a standard hazard–vulnerability–risk framework.
 
 Hazard is derived from ERA5 and IMD rainfall using quantile-mapped bias correction and EVT-based extreme modeling to estimate extreme rainfall magnitudes (return levels). 
 A spatial graph $G=(V,E,W)$ is constructed, where nodes $V$ represent grid cells, edges $E$ encode spatial adjacency, and weights $W$ capture distance, terrain, and drainage influence. This graph is first used in a graph diffusion step to propagate extreme rainfall across neighboring regions, producing spatially coherent hazard fields that reflect physical spillover and connectivity.
