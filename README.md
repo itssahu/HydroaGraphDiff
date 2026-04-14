@@ -20,3 +20,17 @@ Hazard is derived from ERA5 and IMD rainfall using quantile-mapped bias correcti
 A spatial graph $G=(V,E,W)$ is constructed, where nodes $V$ represent grid cells, edges $E$ encode spatial adjacency, and weights $W$ capture distance, terrain, and drainage influence. This graph is first used in a graph diffusion step to propagate extreme rainfall across neighboring regions, producing spatially coherent hazard fields that reflect physical spillover and connectivity.
 The same graph $G$ is then reused within a Graph Conditioned DDPM, where it plays two roles: (i) as a conditioning structure guiding the model to learn spatial dependencies in hazard fields, and (ii) through a graph Laplacian regularization ($L = D - W$), which enforces smoothness and physical consistency by penalizing unrealistic spatial discontinuities. The diffusion model learns the conditional distribution of hazard fields and generates multiple stochastic realizations, thereby capturing uncertainty and variability in extreme rainfall patterns.
 Vulnerability is constructed from geographic features (terrain, infrastructure, population) into sensitivity, exposure, and adaptive capacity. Risk is computed as $R = H \times V$, with uncertainty, extreme probability, climate scenarios (SSP245/585), and loss exceedance curves (EP, PML, TVaR) providing a comprehensive probabilistic climate risk assessment.
+
+## 3. Graph Conditioned DDPM 
+<img width="679" height="725" alt="image" src="https://github.com/user-attachments/assets/50bd2c24-b010-4fc2-b769-e4051d4d0ecf" />
+
+Figure 2. Final architecture of the Graph Conditioned DDPM in HydroGraphDiff. A for-
+ward diffusion process progressively corrupts EVT-conditioned hazard fields into Gaussian noise.
+A UNet-based neural network learns to predict noise conditioned on geospatial features (c), posi-
+tional encoding, temporal embeddings (t), and spatial graph structure (G = (V, E, W )), where V
+denotes nodes (grid cells or wards), E represents spatial adjacency, and W encodes edge weights
+(distance, similarity, or terrain influence). A graph Laplacian regularization explicitly enforces
+spatial consistency and smoothness. During reverse diffusion, the learned noise distribution is iter-
+atively removed to generate stochastic, spatially coherent hazard realizations consistent with both
+data and underlying spatial dependencies. 
+
