@@ -21,30 +21,36 @@ A spatial graph $G=(V,E,W)$ is constructed, where nodes $V$ represent grid cells
 The same graph $G$ is then reused within a Graph Conditioned DDPM, where it plays two roles: (i) as a conditioning structure guiding the model to learn spatial dependencies in hazard fields, and (ii) through a graph Laplacian regularization ($L = D - W$), which enforces smoothness and physical consistency by penalizing unrealistic spatial discontinuities. The diffusion model learns the conditional distribution of hazard fields and generates multiple stochastic realizations, thereby capturing uncertainty and variability in extreme rainfall patterns.
 Vulnerability is constructed from geographic features (terrain, infrastructure, population) into sensitivity, exposure, and adaptive capacity. Risk is computed as $R = H \times V$, with uncertainty, extreme probability, climate scenarios (SSP245/585), and loss exceedance curves (EP, PML, TVaR) providing a comprehensive probabilistic climate risk assessment.
 
-## 3. Bias Correction, Extreme Value Theorem and Graph Diffusion
+## 3. Bias Correction, Extreme Value Theory and Graph Diffusion
 
 **Figure 2: Extreme rainfall modeling and spatial enhancement pipeline**
 
-![Bias Correction](https://github.com/user-attachments/assets/c760d4a8-1a16-424f-a24f-4449c8c04ff9)
-
-![EVT Modeling](https://github.com/user-attachments/assets/09d1c585-526d-42ce-9a0b-b8c2a4d52e6f)
-
-![Graph Diffusion](https://github.com/user-attachments/assets/b338e860-1162-4687-be8d-b4aef3ff8aeb)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/c760d4a8-1a16-424f-a24f-4449c8c04ff9" width="30%">
+  <img src="https://github.com/user-attachments/assets/09d1c585-526d-42ce-9a0b-b8c2a4d52e6f" width="30%">
+  <img src="https://github.com/user-attachments/assets/b338e860-1162-4687-be8d-b4aef3ff8aeb" width="30%">
+</p>
 
 **(a) Bias Correction – Quantile Mapping**  
-IMERG rainfall is bias-corrected using IMD observations:  
+IMERG rainfall is bias-corrected using IMD observations:
+  
 R^BC = F⁻¹_IMD(F_IMERG(R))  
+This ensures reliable estimation of extreme rainfall.
 
 **(b) Extreme Value Modeling (EVT)**  
-Return levels are estimated using GPD (POT) and GEV.  
-GPD is preferred for stable tail estimation of extremes.
+Return levels are estimated using:
+- Generalized Pareto Distribution (POT)
+- Generalized Extreme Value (GEV)
+
+GPD is selected due to more stable tail estimation for extreme rainfall.
 
 **(c) Graph-based Spatial Diffusion**  
-Spatial graph G = (V, E, W) encodes terrain and connectivity.  
+A spatial graph G = (V, E, W) models adjacency, terrain, and drainage connectivity.  
+Hazard propagation:
 
 Hᵢ ← αHᵢ + (1 − α) Σ wᵢⱼ Hⱼ  
 
-This improves spatial coherence and produces realistic hazard fields.
+This improves spatial coherence and produces physically consistent ward-level hazard estimates.
 
 ## 4. Graph Conditioned DDPM (Denoising Diffusion Probabilistic Model) 
 <img width="679" height="725" alt="image" src="https://github.com/user-attachments/assets/50bd2c24-b010-4fc2-b769-e4051d4d0ecf" />
