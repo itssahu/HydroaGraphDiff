@@ -49,7 +49,7 @@ Figure.2: Extreme rainfall modeling and spatial enhancement pipeline
 ## 4. Graph Conditioned DDPM (Denoising Diffusion Probabilistic Model) 
 <img width="679" height="725" alt="image" src="https://github.com/user-attachments/assets/50bd2c24-b010-4fc2-b769-e4051d4d0ecf" />
 
-Figure.2: Final architecture of the Graph Conditioned DDPM in HydroGraphDiff. A for-
+Figure.3: Final architecture of the Graph Conditioned DDPM in HydroGraphDiff. A for-
 ward diffusion process progressively corrupts EVT-conditioned hazard fields into Gaussian noise.
 A UNet-based neural network learns to predict noise conditioned on geospatial features (c), posi-
 tional encoding, temporal embeddings (t), and spatial graph structure (G = (V, E, W )), where V
@@ -63,7 +63,7 @@ data and underlying spatial dependencies.
 
 <img width="1712" height="337" alt="reverse" src="https://github.com/user-attachments/assets/6fc7e116-6bc2-472f-91d7-4e5cce035793" />
 
-Figure.3: Diffusion dynamics in HydroGraphDiff for RL100 extreme rainfall scenario.
+Figure.4: Diffusion dynamics in HydroGraphDiff for RL100 extreme rainfall scenario.
 Top: Forward diffusion progressively corrupts the EVT-conditioned hazard field into noise, de-
 stroying spatial structure as timestep increases. Bottom: Reverse diffusion using the Conditional
 Graph DDPM reconstructs spatially coherent hazard fields, guided by geospatial conditioning and
@@ -130,7 +130,7 @@ This enables **probabilistic hazard modeling**, capturing both:
 
   <img width="1500" height="695" alt="image" src="https://github.com/user-attachments/assets/f4500387-bc20-4323-a16d-3fd4e932b8c7" />
 
-Figure.4: Graph-conditioned DDPM generates diverse stochastic realizations of RL100(100 year return level) extreme rainfall, capturing spatial variability and uncertainty across the urban flood landscape.
+Figure.5: Graph-conditioned DDPM generates diverse stochastic realizations of RL100(100 year return level) extreme rainfall, capturing spatial variability and uncertainty across the urban flood landscape.
 
 ### Hazard index calculation at ward-level
 
@@ -241,7 +241,7 @@ Structural vulnerability incorporates adaptive capacity into the risk formulatio
 
 <img width="1286" height="1125" alt="image" src="https://github.com/user-attachments/assets/453621df-f042-42c3-8f72-c7e9addcc653" />
 
-Figure.5: Ward-level flood vulnerability components for Hyderabad, showing spatial patterns of adaptive capacity, sensitivity, potential impact, and resulting structural vulnerability.
+Figure.6: Ward-level flood vulnerability components for Hyderabad, showing spatial patterns of adaptive capacity, sensitivity, potential impact, and resulting structural vulnerability.
 Insight: High vulnerability emerges where elevated sensitivity and exposure coincide with low adaptive capacity, highlighting flood risk hotspots along the Musi river corridor.
 
 ## 6. Flood Risk(Impact) Formulation at ward level
@@ -381,14 +381,14 @@ Classification:
 
 <img width="1500" height="861" alt="image" src="https://github.com/user-attachments/assets/0aaecafa-bba4-4ee1-9a85-90a2ad712931" />
 
-Figure.6: Ward-level flood risk (impact) and probability of extreme flood events (likelihood) across increasing return periods (10–100 years) under observed climate (2001–2024).
+Figure.7: Ward-level flood risk (impact) and probability of extreme flood events (likelihood) across increasing return periods (10–100 years) under observed climate (2001–2024).
 
 Insight: Risk intensity and extreme-event likelihood both amplify with higher return levels, with hotspots consistently concentrated along the Musi river corridor.
 
 
 <img width="1196" height="1125" alt="image" src="https://github.com/user-attachments/assets/00d703ae-860f-419e-954e-57be55b9e52f" />
 
-Figure.7: Future climate-driven evolution of ward-level flood risk for the 100-year return period using CMIP6 (MIROC6) projections under SSP245 and SSP585 scenarios. The rows show flood risk (impact), change in risk (ΔRisk), change in extreme event probability (ΔProbability), climate amplification (risk ratio: Future/Baseline), and final decision zones based on the composite score D = R · P · A.
+Figure.8: Future climate-driven evolution of ward-level flood risk for the 100-year return period using CMIP6 (MIROC6) projections under SSP245 and SSP585 scenarios. The rows show flood risk (impact), change in risk (ΔRisk), change in extreme event probability (ΔProbability), climate amplification (risk ratio: Future/Baseline), and final decision zones based on the composite score D = R · P · A.
 
 Insight: Climate change systematically amplifies flood risk and its spatial heterogeneity, with SSP585 exhibiting stronger intensification and variability compared to SSP245. While some regions show reductions (blue) due to localized shifts in rainfall patterns, most high-risk wards—especially along the Musi river corridor—experience increased risk and/or likelihood. Climate amplification maps highlight where future hazards disproportionately escalate relative to baseline conditions, and the final decision zones translate these compounded effects into actionable priorities (Act/Monitor/Low), enabling targeted, risk-informed climate adaptation planning.
 
@@ -613,19 +613,19 @@ H<sub>i</sub><sup>(k)</sup> → H<sub>w</sub> → D<sub>w</sub> → L<sub>w</sub
 
 <img width="1500" height="895" alt="image" src="https://github.com/user-attachments/assets/3bf7ffd5-4c7f-4a75-a701-d767c969adfa" />
 
-Figure.8: Exceedance Probability (EP) curves comparing baseline and future climate scenarios (SSP245 and SSP585), showing the relationship between annual exceedance probability and total loss (₹ Millions).
+Figure.9: Exceedance Probability (EP) curves comparing baseline and future climate scenarios (SSP245 and SSP585), showing the relationship between annual exceedance probability and total loss (₹ Millions).
 
 Insight: Both SSP scenarios exhibit a clear rightward shift relative to the baseline, indicating higher losses across all probability levels, with SSP585 showing the strongest amplification. The divergence becomes more pronounced in the tail (low-probability, high-impact events), highlighting that climate change disproportionately increases extreme losses rather than just average risk.
 
 <img width="1234" height="765" alt="image" src="https://github.com/user-attachments/assets/bb71e0a7-c3ec-425e-82ca-1893f4471498" />
 
-Figure.9: Comparison of key risk metrics—Expected Annual Loss (AAL), 99th percentile loss (P99), and Tail Value at Risk (TVaR)—across baseline, SSP245, and SSP585 climate scenarios.
+Figure.10: Comparison of key risk metrics—Expected Annual Loss (AAL), 99th percentile loss (P99), and Tail Value at Risk (TVaR)—across baseline, SSP245, and SSP585 climate scenarios.
 
 Insight: All risk metrics increase under future climate scenarios, with SSP585 showing the largest escalation. While AAL exhibits moderate growth, the sharper rise in P99 and TVaR indicates that climate change disproportionately amplifies extreme and tail losses, highlighting a significant increase in catastrophic flood risk rather than just average impacts.
 
 <img width="1500" height="403" alt="image" src="https://github.com/user-attachments/assets/3b3c68ad-3c18-42ce-9cf6-35068f645947" />
 
-Figure.10: Spatial distribution of extreme losses (P99) under SSP245 and SSP585, along with relative climate impact showing the normalized difference between scenarios.
+Figure.11: Spatial distribution of extreme losses (P99) under SSP245 and SSP585, along with relative climate impact showing the normalized difference between scenarios.
 
 Insight: Extreme losses intensify and expand spatially under SSP585 compared to SSP245, with clear amplification in urban and flood-prone zones. The relative impact map highlights localized hotspots where climate change disproportionately increases risk, revealing strong spatial heterogeneity rather than uniform escalation.
 
