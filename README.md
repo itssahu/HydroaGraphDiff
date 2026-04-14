@@ -391,5 +391,244 @@ Figure.7: Future climate-driven evolution of ward-level flood risk for the 100-y
 
 Insight: Climate change systematically amplifies flood risk and its spatial heterogeneity, with SSP585 exhibiting stronger intensification and variability compared to SSP245. While some regions show reductions (blue) due to localized shifts in rainfall patterns, most high-risk wards—especially along the Musi river corridor—experience increased risk and/or likelihood. Climate amplification maps highlight where future hazards disproportionately escalate relative to baseline conditions, and the final decision zones translate these compounded effects into actionable priorities (Act/Monitor/Low), enabling targeted, risk-informed climate adaptation planning.
 
+## 🌍 Climate-Conditioned Catastrophe Risk Modeling (EP Curves, Loss Metrics & Spatial Impact)
+
+This section presents a full probabilistic catastrophe modeling pipeline integrating generative hazard ensembles, exposure modeling, vulnerability functions, and Monte Carlo simulation to quantify flood risk under baseline and future climate scenarios (CMIP6 – SSP245, SSP585).
+
+---
+
+# 1. Hazard Aggregation (Grid → Ward)
+
+Hazard fields from generative ensembles are aggregated to ward level using area-weighted integration:
+
+H<sub>w</sub><sup>(k)</sup> = Σ<sub>i</sub> ( H<sub>i</sub><sup>(k)</sup> · w<sub>i,w</sub> )
+
+where:
+
+- H<sub>i</sub><sup>(k)</sup> = hazard at grid cell *i* for scenario *k*  
+- w<sub>i,w</sub> = area weight of grid cell *i* within ward *w*  
+- Σ<sub>i</sub> w<sub>i,w</sub> = 1  
+
+---
+
+#  2. Exposure Model (Asset Value)
+
+Ward-level asset value is constructed using proxy economic indicators:
+
+A<sub>w</sub> = (ρ<sub>w</sub> · α) + (R<sub>w</sub> · β) + (Area<sub>w</sub> · γ)
+
+where:
+
+- ρ<sub>w</sub> = population density  
+- R<sub>w</sub> = road density  
+- Area<sub>w</sub> = ward area (km²)  
+- α = 2000, β = 8000, γ = 50000  (assumptions)
+
+Scaling:
+
+A<sub>w</sub> = A<sub>w</sub> / 10⁶  
+
+Units: ₹ Millions  
+
+---
+
+#  3. Damage Function (Hazard → Damage)
+
+A logistic vulnerability curve converts hazard intensity into fractional damage:
+
+### SSP245:
+
+D<sub>w</sub> = 1 / (1 + exp(-2.5 · (H<sub>w</sub> - 1.2)))
+
+### SSP585:
+
+D<sub>w</sub> = 1 / (1 + exp(-3.2 · (H<sub>w</sub> - 1.1)))
+
+where:
+
+- H<sub>w</sub> = hazard intensity  
+- D<sub>w</sub> ∈ [0,1] = damage ratio  
+
+---
+
+#  4. Hazard Uncertainty & Scaling
+
+Hazard is perturbed using stochastic variability:
+
+H<sub>w</sub> ← H<sub>w</sub> · RL<sub>scale</sub> · LogNormal(0, σ<sub>rl</sub>) · Normal(1, 0.25)
+
+where:
+
+- RL<sub>scale</sub> = return-level scaling (e.g., 1.0, 1.2, 1.5, 2.0)  
+- σ<sub>rl</sub> = uncertainty scaling by return level  
+
+---
+
+#  5. Climate Amplification (SSP Forcing)
+
+Normalized hazard:
+
+Ĥ<sub>w</sub> = H<sub>w</sub> / max(H<sub>w</sub>)
+
+### SSP245:
+
+C<sub>w</sub> = 1 + 0.15 · Ĥ<sub>w</sub>
+
+### SSP585:
+
+C<sub>w</sub> = 1 + 0.5 · Ĥ<sub>w</sub>
+
+---
+
+# 6. Spatial Amplification
+
+Urban effects are incorporated as:
+
+S<sub>w</sub> = 1 + 0.6 · I<sub>w</sub> + 0.3 · ε
+
+where:
+
+- I<sub>w</sub> = impervious surface fraction  
+- ε ~ N(0,1)  
+
+---
+
+# 7. Event Loss Formulation
+
+Ward-level loss:
+
+L<sub>w</sub> = D<sub>w</sub> · A<sub>w</sub> · S<sub>w</sub> · C<sub>w</sub>
+
+Event-level stochastic scaling:
+
+L<sub>w</sub> ← L<sub>w</sub> · LogNormal(0, 0.7)
+
+Total event loss:
+
+L<sub>event</sub> = Σ<sub>w</sub> L<sub>w</sub>
+
+---
+
+# 8. Event Frequency Model
+
+Number of events per year:
+
+λ ~ Gamma(2, 2.5)  
+N ~ Poisson(λ)
+
+Return-level sampling probabilities:
+
+P(RL) = {10: 0.6, 25: 0.25, 50: 0.1, 100: 0.05}
+
+---
+
+# 9. Annual Loss Simulation
+
+Annual loss:
+
+L<sub>year</sub> = Σ<sub>i=1</sub><sup>N</sup> L<sub>event,i</sub>
+
+Simulated over:
+
+T = 10,000 years  
+
+---
+
+# 10. Exceedance Probability (EP Curve)
+
+Loss exceedance probability:
+
+EP(x) = P(L ≥ x)
+
+Empirical estimate:
+
+EP(L<sub>i</sub>) = i / N
+
+(after sorting losses in descending order)
+
+---
+
+# 11. Risk Metrics
+
+### Expected Annual Loss (AAL)
+
+AAL = (1/N) · Σ L<sub>year</sub>
+
+---
+
+### Probable Maximum Loss (P99)
+
+P99 = Quantile(L<sub>year</sub>, 0.99)
+
+---
+
+### Tail Value at Risk (TVaR)
+
+TVaR = E[L<sub>year</sub> | L<sub>year</sub> ≥ P99]
+
+---
+
+# 12. Spatial Risk Metrics
+
+Ward-level extreme loss:
+
+L<sub>w</sub><sup>P99</sup> = Quantile(L<sub>w</sub>, 0.99)
+
+Expected loss:
+
+E[L<sub>w</sub>] = mean(L<sub>w</sub>)
+
+---
+
+# 13. Climate Risk Divergence
+
+Relative impact (SSP585 vs SSP245):
+
+Δ<sub>w</sub> = (L<sub>w</sub><sup>585</sup> − L<sub>w</sub><sup>245</sup>) / (L<sub>w</sub><sup>245</sup> + ε)
+
+Clipped for stability:
+
+Δ<sub>w</sub> ∈ [-0.5, 0.5]
+
+---
+
+# 14. Interpretation
+
+- **EP Curve:** Shift to right → increasing loss severity  
+- **AAL:** captures average yearly loss  
+- **P99:** captures extreme catastrophic loss  
+- **TVaR:** captures tail risk beyond threshold  
+- **Spatial maps:** identify localized climate risk hotspots  
+- **SSP585:** shows strong nonlinear amplification of extreme losses  
+
+---
+
+# End-to-End Pipeline
+
+H<sub>i</sub><sup>(k)</sup> → H<sub>w</sub> → D<sub>w</sub> → L<sub>w</sub> → L<sub>event</sub> → L<sub>year</sub>  
+→ EP Curve → {AAL, P99, TVaR} → Spatial Risk → Climate Impact  
+
+---
+
+<img width="1500" height="895" alt="image" src="https://github.com/user-attachments/assets/3bf7ffd5-4c7f-4a75-a701-d767c969adfa" />
+
+Figure: Exceedance Probability (EP) curves comparing baseline and future climate scenarios (SSP245 and SSP585), showing the relationship between annual exceedance probability and total loss (₹ Millions).
+
+Insight: Both SSP scenarios exhibit a clear rightward shift relative to the baseline, indicating higher losses across all probability levels, with SSP585 showing the strongest amplification. The divergence becomes more pronounced in the tail (low-probability, high-impact events), highlighting that climate change disproportionately increases extreme losses rather than just average risk.
+
+<img width="1234" height="765" alt="image" src="https://github.com/user-attachments/assets/bb71e0a7-c3ec-425e-82ca-1893f4471498" />
+
+Figure: Comparison of key risk metrics—Expected Annual Loss (AAL), 99th percentile loss (P99), and Tail Value at Risk (TVaR)—across baseline, SSP245, and SSP585 climate scenarios.
+
+Insight: All risk metrics increase under future climate scenarios, with SSP585 showing the largest escalation. While AAL exhibits moderate growth, the sharper rise in P99 and TVaR indicates that climate change disproportionately amplifies extreme and tail losses, highlighting a significant increase in catastrophic flood risk rather than just average impacts.
+
+<img width="1500" height="403" alt="image" src="https://github.com/user-attachments/assets/3b3c68ad-3c18-42ce-9cf6-35068f645947" />
+
+Figure: Spatial distribution of extreme losses (P99) under SSP245 and SSP585, along with relative climate impact showing the normalized difference between scenarios.
+
+Insight: Extreme losses intensify and expand spatially under SSP585 compared to SSP245, with clear amplification in urban and flood-prone zones. The relative impact map highlights localized hotspots where climate change disproportionately increases risk, revealing strong spatial heterogeneity rather than uniform escalation.
+
+Climate change amplifies flood risk nonlinearly, with disproportionate escalation in extreme losses and strong spatial heterogeneity, making tail-risk-aware and location-specific adaptation strategies essential.
+
 
 
