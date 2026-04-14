@@ -138,13 +138,13 @@ Building on the stochastic hazard generation framework, the **Graph Conditioned 
 For each ward, the ensemble of scenario-wise hazard realizations is used to construct a probabilistic hazard representation capturing central tendency, tail behavior, and uncertainty. Specifically, a normalized hazard index is computed as:
 
 $$
-H = 0.5\,\mu' + 0.35\,\text{Tail} + 0.15\,\sigma'
+H = 0.5\\mu' + 0.35\\text{Tail} + 0.15\\sigma'
 $$
 
 where \( \mu' \) is the normalized mean hazard across scenarios, \( \sigma' \) represents normalized variability (standard deviation), and the tail component captures extreme behavior using high quantiles:
 
 $$
-\text{Tail} = 0.6\,P90' + 0.4\,P95'
+\text{Tail} = 0.6\P90' + 0.4\P95'
 $$
 
 Here, \( P90' \) and \( P95' \) denote the normalized 90th and 95th percentile hazard values, respectively, ensuring that both moderate and extreme tail risks are incorporated. This formulation explicitly balances average conditions, extreme events, and uncertainty, resulting in a robust probabilistic hazard index.
