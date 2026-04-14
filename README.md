@@ -133,22 +133,17 @@ This enables **probabilistic hazard modeling**, capturing both:
 
 ### Hazard index calculation at ward-level
 
-Building on the stochastic hazard generation framework, the **Graph Conditioned DDPM** generates ensembles of spatially coherent rainfall hazard fields \( H^{(k)}(x, y) \) for each return level. These ensembles (typically ~400 scenarios per return level in our case) are then aggregated to the ward scale using area-weighted spatial integration, ensuring that sub-grid variability and spatial heterogeneity are preserved.
+Building on the stochastic hazard generation framework, the **Graph Conditioned DDPM** generates ensembles of spatially coherent rainfall hazard fields H^(k)(x, y) for each return level. These ensembles (typically ~400 scenarios per return level in our case) are then aggregated to the ward scale using area-weighted spatial integration, ensuring that sub-grid variability and spatial heterogeneity are preserved.
 
 For each ward, the ensemble of scenario-wise hazard realizations is used to construct a probabilistic hazard representation capturing central tendency, tail behavior, and uncertainty. Specifically, a normalized hazard index is computed as:
 
-$$
-H = 0.5\\mu' + 0.35\\text{Tail} + 0.15\\sigma'
-$$
+**H = 0.5·μ′ + 0.35·Tail + 0.15·σ′**
 
-where ( \\mu' ) is the normalized mean hazard across scenarios, ( \\sigma' ) represents normalized variability (standard deviation), and the tail component captures extreme behavior using high quantiles:
+where **μ′** is the normalized mean hazard across scenarios, **σ′** represents normalized variability (standard deviation), and the tail component captures extreme behavior using high quantiles:
 
-$$
-\text{Tail} = 0.6P90' + 0.4P95'
-$$
+**Tail = 0.6·P90′ + 0.4·P95′**
 
-Here, \( P90' \) and \( P95' \) denote the normalized 90th and 95th percentile hazard values, respectively, ensuring that both moderate and extreme tail risks are incorporated. This formulation explicitly balances average conditions, extreme events, and uncertainty, resulting in a robust probabilistic hazard index.
-
+Here, **P90′** and **P95′** denote the normalized 90th and 95th percentile hazard values, respectively, ensuring that both moderate and extreme tail risks are incorporated. This formulation explicitly balances average conditions, extreme events, and uncertainty, resulting in a robust probabilistic hazard index.
   
 
 
