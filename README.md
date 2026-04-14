@@ -681,34 +681,45 @@ Climate change amplifies flood risk nonlinearly, with disproportionate escalatio
 
 ---
 
-#  Future Scope
+#  Limitations of HydroGraphDiff
 
-- **Multi-Hazard Extension**  
-  Extend framework to cyclones, heatwaves, droughts, and compound events (e.g., rainfall + river flooding).
+While HydroGraphDiff provides a novel probabilistic and spatially-aware flood risk framework, several limitations remain:
 
-- **Higher-Resolution EO Data Integration**  
-  Incorporate SAR, multispectral, and LiDAR data for improved hazard and exposure estimation.
+- **Dependence on Data Quality and Resolution**  
+  The framework relies heavily on satellite rainfall (IMERG), terrain data, and ward-level features. Errors in bias correction, coarse spatial resolution, or missing local observations can propagate through the pipeline and affect hazard and risk estimates.
 
-- **Dynamic Vulnerability Modeling**  
-  Replace static vulnerability with time-evolving socioeconomic and infrastructure data.
+- **Simplified Hydrodynamic Representation**  
+  The model does not explicitly solve physical flow equations (e.g., shallow water equations). While graph diffusion approximates spatial propagation, it cannot fully capture detailed hydraulic processes such as flow velocity, backwater effects, or channel dynamics.
 
-- **Real-Time Forecasting & Early Warning Systems**  
-  Integrate weather forecasts and nowcasting with generative models for operational deployment.
+- **Assumptions in Vulnerability and Damage Functions**  
+  The damage function and vulnerability formulation are simplified and may not fully represent real-world structural fragility, building typologies, or socioeconomic heterogeneity.
 
-- **Graph Neural Networks for Adaptive Learning**  
-  Learn graph structure dynamically instead of predefined adjacency and weights.
+- **Approximate Climate Scaling Approach**  
+  Climate impacts are incorporated using scaling relationships derived from CMIP6 scenarios (SSP245, SSP585). This does not fully capture changes in temporal rainfall structure, storm dynamics, or compound climate effects.
 
-- **Diffusion + Flow Matching / Advanced Generative Models**  
-  Explore more efficient generative frameworks for faster and scalable simulations.
+- **Model Generalization and Transferability**  
+  The framework is calibrated for the Hyderabad–Musi basin region. Applying it to other geographies may require recalibration of graph structure, vulnerability parameters, and exposure models.
 
-- **Insurance & Financial Risk Integration**  
-  Link outputs to pricing, portfolio risk, reinsurance, and climate stress testing.
+- **Uncertainty in Generative Modeling**  
+  While diffusion models generate realistic ensembles, they may introduce biases or artifacts, especially in extreme tails where data is scarce.
 
-- **Policy & Urban Planning Applications**  
-  Use decision zones for zoning regulations, infrastructure prioritization, and resilience planning.
+- **Computational Cost of Large-Scale Ensembles**  
+  Generating hundreds of scenarios per return level and running Monte Carlo simulations can be computationally intensive for large regions or higher resolutions.
 
-- **Cloud Deployment & Scalable Pipelines**  
-  Build production-ready pipelines for large-scale geospatial risk assessment.
+- **Static Exposure and Vulnerability Assumptions**  
+  Exposure (asset value) and vulnerability are treated as static, whereas in reality they evolve over time due to urbanization, infrastructure development, and adaptation measures.
+
+---
+
+#  Future Improvements
+
+Addressing these limitations would involve:
+
+- Coupling with **hydrodynamic models** for physics-based validation  
+- Incorporating **higher-resolution and multi-source EO data**  
+- Developing **dynamic vulnerability and exposure models**  
+- Using **time-resolved climate projections instead of scaling factors**  
+- Improving **generative model robustness for extreme tails**  
 
 ---
 
