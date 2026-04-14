@@ -613,19 +613,19 @@ H<sub>i</sub><sup>(k)</sup> → H<sub>w</sub> → D<sub>w</sub> → L<sub>w</sub
 
 <img width="1500" height="895" alt="image" src="https://github.com/user-attachments/assets/3bf7ffd5-4c7f-4a75-a701-d767c969adfa" />
 
-Figure: Exceedance Probability (EP) curves comparing baseline and future climate scenarios (SSP245 and SSP585), showing the relationship between annual exceedance probability and total loss (₹ Millions).
+Figure.8: Exceedance Probability (EP) curves comparing baseline and future climate scenarios (SSP245 and SSP585), showing the relationship between annual exceedance probability and total loss (₹ Millions).
 
 Insight: Both SSP scenarios exhibit a clear rightward shift relative to the baseline, indicating higher losses across all probability levels, with SSP585 showing the strongest amplification. The divergence becomes more pronounced in the tail (low-probability, high-impact events), highlighting that climate change disproportionately increases extreme losses rather than just average risk.
 
 <img width="1234" height="765" alt="image" src="https://github.com/user-attachments/assets/bb71e0a7-c3ec-425e-82ca-1893f4471498" />
 
-Figure: Comparison of key risk metrics—Expected Annual Loss (AAL), 99th percentile loss (P99), and Tail Value at Risk (TVaR)—across baseline, SSP245, and SSP585 climate scenarios.
+Figure.9: Comparison of key risk metrics—Expected Annual Loss (AAL), 99th percentile loss (P99), and Tail Value at Risk (TVaR)—across baseline, SSP245, and SSP585 climate scenarios.
 
 Insight: All risk metrics increase under future climate scenarios, with SSP585 showing the largest escalation. While AAL exhibits moderate growth, the sharper rise in P99 and TVaR indicates that climate change disproportionately amplifies extreme and tail losses, highlighting a significant increase in catastrophic flood risk rather than just average impacts.
 
 <img width="1500" height="403" alt="image" src="https://github.com/user-attachments/assets/3b3c68ad-3c18-42ce-9cf6-35068f645947" />
 
-Figure: Spatial distribution of extreme losses (P99) under SSP245 and SSP585, along with relative climate impact showing the normalized difference between scenarios.
+Figure.10: Spatial distribution of extreme losses (P99) under SSP245 and SSP585, along with relative climate impact showing the normalized difference between scenarios.
 
 Insight: Extreme losses intensify and expand spatially under SSP585 compared to SSP245, with clear amplification in urban and flood-prone zones. The relative impact map highlights localized hotspots where climate change disproportionately increases risk, revealing strong spatial heterogeneity rather than uniform escalation.
 
