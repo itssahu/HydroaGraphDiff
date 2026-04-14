@@ -649,30 +649,20 @@ Climate change amplifies flood risk nonlinearly, with disproportionate escalatio
 
 #  Key Innovations
 
-- **Graph-Conditioned Generative Hazard Modeling**  
-  Introduced a Conditional Graph-Based Denoising Diffusion Probabilistic Model (DDPM) to generate spatially coherent rainfall extremes, capturing complex dependencies beyond traditional statistical methods.
+🔹 **Graph-Conditioned Generative Hazard Modeling**
+Introduced a Conditional Graph-Based Denoising Diffusion Probabilistic Model (DDPM) to generate spatially coherent extreme rainfall fields, capturing complex spatial dependencies beyond traditional statistical and deep learning approaches.
 
-- **Integration of Extreme Value Theory with Deep Generative Models**  
-  Combined Peaks Over Threshold (Generalized Pareto Distribution) with graph diffusion and DDPM to model both **tail extremes** and **spatial structure**, bridging classical hydrology and modern AI.
+🔹 **Unified EVT–Generative Framework for Tail + Spatial Modeling**
+Integrated Extreme Value Theory (Peaks Over Threshold / GPD) with graph-based diffusion and DDPM to jointly model distribution tails and spatial structure, bridging classical hydrology and generative AI.
 
-- **Physics-Informed Spatial Graph Learning**  
-  Constructed a spatial graph G = (V, E, W) incorporating adjacency, distance, terrain, and drainage connectivity, enabling physically consistent propagation of hazard across regions.
+🔹 **Physics-Informed Spatial Graph Learning**
+Constructed a spatial graph G=(V,E,W) incorporating terrain, drainage, and connectivity, enabling physically consistent propagation of extreme hazards within a generative modeling framework.
 
-- **Probabilistic Hazard Index from Generative Ensembles**  
-  Developed a novel hazard formulation combining mean, variability, and tail quantiles (P90–P95), capturing **uncertainty + extremes** in a single index.
+🔹 **From Point Extremes to Spatial Extreme Fields**
+Moved beyond point-based EVT estimates to generate full spatial extreme rainfall fields, capturing spatial heterogeneity and dependencies critical for realistic flood modeling.
 
-- **Full End-to-End Catastrophe Modeling Pipeline**  
-  Built a complete pipeline:  
-  Bias Correction → EVT → Graph Diffusion → Generative Modeling → Vulnerability → Risk → Loss → EP Curves → Climate Impact
-
-- **Climate-Conditioned Risk Simulation (CMIP6 Integration)**  
-  Incorporated SSP245 and SSP585 projections (MIROC6) to quantify **future risk amplification**, moving beyond static risk estimation.
-
-- **Stochastic Loss Modeling with Monte Carlo Simulation**  
-  Generated thousands of synthetic event years to compute EP curves, AAL, P99, and TVaR — aligning with industry catastrophe modeling standards (RMS, AIR, Munich Re).
-
-- **Spatially Explicit Decision Intelligence Framework**  
-  Translated probabilistic risk into **actionable decision zones (Act / Monitor / Low Priority)** using a composite score combining risk, probability, and climate amplification.
+🔹 **Probabilistic Hazard Representation from Generative Ensembles**
+Developed a hazard formulation combining mean behavior, variability, and tail quantiles (P90–P95), enabling a unified representation of uncertainty and extreme risk.
 
 ---
 
