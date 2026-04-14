@@ -56,8 +56,6 @@ $$
 
 As $t$ increases, spatial structure is gradually destroyed, and the field approaches an isotropic Gaussian distribution.
 
----
-
 The Conditional Graph DDPM is trained to learn the noise function:
 
 $$
@@ -69,9 +67,7 @@ which implicitly models the conditional distribution of noise given:
 - diffusion timestep $t$
 - geospatial conditioning variables $c$
 - spatial graph structure $G$
-
----
-
+  
 The model leverages a UNet-style encoder–decoder to fuse multi-channel inputs:
 
 $$
@@ -81,8 +77,6 @@ $$
 while incorporating:
 - temporal embeddings
 - graph-aware spatial constraints via the Laplacian operator
-
----
 
 During reverse diffusion, the model iteratively removes the estimated noise component from $x_t$, reconstructing spatial structure step-by-step.
 
@@ -94,8 +88,6 @@ $$
 
 at each timestep, ensuring sampling from the learned data distribution rather than producing a deterministic output.
 
----
-
 As a result, the framework generates multiple stochastic hazard realizations:
 
 $$
@@ -106,8 +98,6 @@ each representing a physically consistent extreme rainfall scenario conditioned 
 - terrain
 - urban characteristics
 - climate-driven extremes
-
----
 
 This enables **probabilistic hazard modeling**, capturing both:
 - spatial dependencies  
