@@ -145,7 +145,98 @@ where **μ′** is the normalized mean hazard across scenarios, **σ′** repres
 
 Here, **P90′** and **P95′** denote the normalized 90th and 95th percentile hazard values, respectively, ensuring that both moderate and extreme tail risks are incorporated. This formulation explicitly balances average conditions, extreme events, and uncertainty, resulting in a robust probabilistic hazard index.
   
+## 5. Exposure & Vulnerability 
+## Vulnerability and Risk Formulation
 
+The ward-level vulnerability framework is constructed using physically interpretable components derived from terrain, infrastructure, and socio-economic data. All variables are normalized using min-max scaling:
+
+X′ = (X − X_min) / (X_max − X_min)
+
+---
+
+### 1. Sensitivity Index (S)
+
+Sensitivity captures the intrinsic physical susceptibility of a ward to flooding, based on terrain, drainage, and land characteristics.
+
+Components:
+
+- Elevation (lower → higher sensitivity)  
+- Slope (flatter → higher sensitivity)  
+- Distance to drainage (closer → higher sensitivity)  
+- Distance to Musi river (floodplain proximity)  
+- Impervious surface fraction  
+- Drainage density  
+
+Formulation:
+
+S_elev = 1 − elev′  
+S_slope = 1 − slope′  
+S_drain = 1 − dist_drain′  
+S_floodplain = 1 − dist_musi′  
+S_imperv = impervious′  
+S_drain_density = drain_density′  
+
+Final Sensitivity Index:
+
+**S = (S_elev + S_slope + S_drain + S_floodplain + S_imperv + S_drain_density) / 6**
+
+---
+
+### 2. Adaptive Capacity (AC)
+
+Adaptive capacity represents the ability of a ward to respond to and recover from flooding, based on infrastructure and accessibility.
+
+Components:
+
+- Road density (higher → better capacity)  
+- Distance to nearest hospital (closer → better capacity)  
+
+Formulation:
+
+AC_roads = road_density′  
+AC_hospital = 1 − dist_hospital′  
+
+Final Adaptive Capacity:
+
+**AC = (AC_roads + AC_hospital) / 2**
+
+---
+
+### 3. Exposure (E)
+
+Exposure represents the concentration of population at risk.
+
+Formulation:
+
+**E = population_density′**
+
+---
+
+### 4. Potential Impact
+
+Potential impact captures the interaction between physical susceptibility and exposed population, without accounting for resilience.
+
+**Potential Impact = S × E**
+
+---
+
+### 5. Structural Vulnerability (V)
+
+Structural vulnerability incorporates adaptive capacity into the risk formulation, following the IPCC-aligned framework.
+
+**V = S × E × (1 − AC)**
+
+---
+
+### Interpretation
+
+- **Sensitivity (S):** Physical flood susceptibility (terrain + hydrology + urbanization)  
+- **Exposure (E):** Population at risk  
+- **Adaptive Capacity (AC):** Infrastructure and response capability  
+- **Potential Impact:** Raw flood impact potential  
+- **Structural Vulnerability (V):** Realistic vulnerability accounting for resilience  
+
+This formulation ensures a spatially explicit, interpretable, and physically consistent assessment of ward-level flood vulnerability.
 
 
 
