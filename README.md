@@ -262,3 +262,134 @@ where:
 
 This probabilistic definition of risk enables a more realistic representation of climate-driven flood impacts by explicitly incorporating both **uncertainty in hazard generation** and **heterogeneity in vulnerability across wards**, leading to spatially explicit and decision-relevant risk estimates.
 
+## Flood Risk and Climate Impact Formulation
+
+This section describes the mathematical formulation used to generate baseline flood risk, extreme event likelihood, and future climate-driven risk evolution at the ward level.
+
+---
+
+#  Baseline Risk and Likelihood
+
+###  Flood Risk (Impact)
+
+Hazard is derived from generative ensembles:
+
+H_w = 0.5·μ′_w + 0.35·(0.6·P90′_w + 0.4·P95′_w) + 0.15·σ′_w  
+
+where:
+- μ′_w = normalized mean hazard across scenarios for ward w  
+- σ′_w = normalized standard deviation (uncertainty)  
+- P90′_w, P95′_w = normalized 90th and 95th percentile hazard (tail extremes)  
+
+Structural vulnerability:
+
+V_w = S_w · E_w · (1 − AC_w)
+
+where:
+- S_w = sensitivity (terrain, drainage, imperviousness)  
+- E_w = exposure (population density)  
+- AC_w = adaptive capacity (roads, hospitals)  
+
+Final risk:
+
+R_w = H_w · V_w  
+
+Normalized for visualization:
+
+R′_w = (R_w − min(R)) / (max(R) − min(R))
+
+---
+
+###  Probability of Extreme Events (Likelihood)
+
+Threshold (mean hazard):
+
+T_w = (1 / N) · Σ H_w^(k)
+
+Probability:
+
+P_w = (1 / N) · Σ 𝟙(H_w^(k) > T_w)
+
+where:
+- H_w^(k) = hazard from kth generated scenario  
+- N = number of scenarios (~400)  
+- 𝟙(·) = indicator function (1 if condition true, else 0)  
+
+---
+
+#  Future Climate Risk Evolution
+
+---
+
+###  Flood Risk under Climate Change
+
+Climate scaling factor:
+
+Δ_w = Mean_Future_Rainfall_w / Mean_Historical_Rainfall_w  
+
+Future hazard:
+
+H_w^future = H_w^baseline · Δ_w  
+
+Future risk:
+
+R_w^future = H_w^future · V_w  
+
+---
+
+###  Change in Risk
+
+ΔR_w = R_w^future − R_w^baseline  
+
+---
+
+###  Change in Extreme Event Probability
+
+ΔP_w = P_w^future − P_w^baseline  
+
+---
+
+### Climate Amplification (Risk Ratio)
+
+A_w = R_w^future / R_w^baseline  
+
+Interpretation:
+- A_w > 1 → risk amplification due to climate change  
+- A_w < 1 → reduced risk  
+
+---
+
+###  Decision Zones (Actionable Risk)
+
+Decision score:
+
+D_w = R_w · P_w · A_w  
+
+Thresholds:
+
+T_D = 80th percentile of D  
+T_R = 75th percentile of R  
+
+Classification:
+
+- Act → D_w > T_D  
+- Monitor → D_w ≤ T_D and R_w > T_R  
+- Low Priority → otherwise  
+
+---
+
+# End-to-End Pipeline
+
+H^(k)(x, y) → H_w → R_w → P_w → A_w → D_w → Decision Zones
+
+---
+
+# Interpretation
+
+- **Risk (R):** Impact combining hazard and structural vulnerability  
+- **Probability (P):** Likelihood of extreme events  
+- **Amplification (A):** Climate-driven escalation of risk  
+- **Decision Score (D):** Actionable prioritization metric  
+
+This framework integrates **generative uncertainty (DDPM), extreme value theory, spatial vulnerability, and climate projections**, enabling robust and decision-relevant flood risk assessment.
+
