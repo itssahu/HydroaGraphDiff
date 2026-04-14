@@ -141,7 +141,7 @@ $$
 H = 0.5\\mu' + 0.35\\text{Tail} + 0.15\\sigma'
 $$
 
-where \( \\mu' \) is the normalized mean hazard across scenarios, \( \\sigma' \) represents normalized variability (standard deviation), and the tail component captures extreme behavior using high quantiles:
+where ( \\mu' ) is the normalized mean hazard across scenarios, ( \\sigma' ) represents normalized variability (standard deviation), and the tail component captures extreme behavior using high quantiles:
 
 $$
 \text{Tail} = 0.6P90' + 0.4P95'
