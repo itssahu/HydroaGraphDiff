@@ -727,13 +727,11 @@ Addressing these limitations would involve:
 
 # Final Perspective
 
-This project moves beyond traditional flood modeling by combining:
+HydroGraphDiff represents a next-generation shift in flood risk modeling by unifying extreme value theory, deep generative AI, graph-based spatial modeling, and climate projections into a single probabilistic framework.
 
-- Extreme value statistics  
-- Deep generative AI  
-- Graph-based spatial reasoning  
-- Climate projections  
-- Catastrophe risk modeling  
+Unlike traditional deterministic approaches, it explicitly captures **uncertainty, tail risk, and spatial dependencies**, enabling realistic simulation of extreme events and their cascading impacts across complex urban systems.
 
-into a **unified probabilistic framework**, enabling **realistic, scalable, and decision-ready climate risk assessment**.
+By integrating **climate-conditioned risk amplification, stochastic loss modeling, and decision-centric metrics (EP curves, AAL, PML, TVaR)**, the framework bridges climate science, AI, and catastrophe risk analytics—making it directly applicable to insurers, urban planners, and climate resilience decision-making.
+
+Most importantly, HydroGraphDiff lays the foundation for **AI-driven probabilistic climate risk digital twins**, where extensions such as multi-model climate ensembles, physics-informed learning, and dynamic exposure modeling can evolve it into **a scalable, real-time climate risk intelligence platform**.
 
