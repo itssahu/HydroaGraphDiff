@@ -681,45 +681,41 @@ Climate change amplifies flood risk nonlinearly, with disproportionate escalatio
 
 ---
 
+
 #  Limitations of HydroGraphDiff
 
-While HydroGraphDiff provides a novel probabilistic and spatially-aware flood risk framework, several limitations remain:
+- **Limited historical data (2001–2024)**  
+  ~23 years of data may not fully capture rare extreme events (e.g., 100+ year floods), introducing uncertainty in tail estimation.
 
-- **Dependence on Data Quality and Resolution**  
-  The framework relies heavily on satellite rainfall (IMERG), terrain data, and ward-level features. Errors in bias correction, coarse spatial resolution, or missing local observations can propagate through the pipeline and affect hazard and risk estimates.
+- **Simplified hydrodynamics**  
+  The framework does not explicitly solve physical flow equations, so detailed flood dynamics (flow routing, inundation depth) are approximated via graph diffusion.
 
-- **Simplified Hydrodynamic Representation**  
-  The model does not explicitly solve physical flow equations (e.g., shallow water equations). While graph diffusion approximates spatial propagation, it cannot fully capture detailed hydraulic processes such as flow velocity, backwater effects, or channel dynamics.
+- **Approximate climate scaling (CMIP6 SSPs)**  
+  Future impacts are modeled using scaling factors, which may not fully capture changes in rainfall structure, storm dynamics, or compound events.
 
-- **Assumptions in Vulnerability and Damage Functions**  
-  The damage function and vulnerability formulation are simplified and may not fully represent real-world structural fragility, building typologies, or socioeconomic heterogeneity.
-
-- **Approximate Climate Scaling Approach**  
-  Climate impacts are incorporated using scaling relationships derived from CMIP6 scenarios (SSP245, SSP585). This does not fully capture changes in temporal rainfall structure, storm dynamics, or compound climate effects.
-
-- **Model Generalization and Transferability**  
-  The framework is calibrated for the Hyderabad–Musi basin region. Applying it to other geographies may require recalibration of graph structure, vulnerability parameters, and exposure models.
-
-- **Uncertainty in Generative Modeling**  
-  While diffusion models generate realistic ensembles, they may introduce biases or artifacts, especially in extreme tails where data is scarce.
-
-- **Computational Cost of Large-Scale Ensembles**  
-  Generating hundreds of scenarios per return level and running Monte Carlo simulations can be computationally intensive for large regions or higher resolutions.
-
-- **Static Exposure and Vulnerability Assumptions**  
-  Exposure (asset value) and vulnerability are treated as static, whereas in reality they evolve over time due to urbanization, infrastructure development, and adaptation measures.
+- **Static exposure and vulnerability assumptions**  
+  Asset values and vulnerability are treated as constant, whereas in reality they evolve with urbanization, infrastructure, and adaptation.
 
 ---
 
-#  Future Improvements
+# Future Improvements
 
 Addressing these limitations would involve:
 
-- Coupling with **hydrodynamic models** for physics-based validation  
-- Incorporating **higher-resolution and multi-source EO data**  
-- Developing **dynamic vulnerability and exposure models**  
-- Using **time-resolved climate projections instead of scaling factors**  
-- Improving **generative model robustness for extreme tails**  
+- **Coupling with hydrodynamic models for physics-informed validation**  
+  Integrate shallow water equation-based models to capture flow routing, inundation depth, and channel dynamics, improving physical realism of hazard propagation.
+
+- **Integration of high-resolution, multi-source Earth Observation data**  
+  Incorporate SAR, multispectral imagery, LiDAR, and high-resolution DEMs to better resolve urban flooding patterns and improve hazard and exposure estimation.
+
+- **Dynamic exposure and vulnerability modeling**  
+  Develop time-evolving representations of population, infrastructure, land-use change, and adaptive capacity to reflect realistic future risk scenarios.
+
+- **Time-resolved climate projections (beyond scaling approaches)**  
+  Utilize downscaled CMIP6 simulations to capture changes in rainfall intensity, duration, temporal structure, and compound extreme events.
+
+- **Improved generative modeling of extreme tails**  
+  Enhance robustness of diffusion models using tail-focused training, hybrid EVT–deep learning approaches, and larger datasets to better represent rare, high-impact events.
 
 ---
 
