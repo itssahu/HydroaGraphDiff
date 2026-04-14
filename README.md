@@ -23,27 +23,28 @@ Vulnerability is constructed from geographic features (terrain, infrastructure, 
 
 ## 3. Bias Correction, Extreme Value Theorem and Graph Diffusion
 
-Figure 2: Extreme rainfall modeling and spatial enhancement pipeline
+**Figure 2: Extreme rainfall modeling and spatial enhancement pipeline**
 
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/c760d4a8-1a16-424f-a24f-4449c8c04ff9" width="32%" />
-  <img src="https://github.com/user-attachments/assets/09d1c585-526d-42ce-9a0b-b8c2a4d52e6f" width="32%" />
-  <img src="https://github.com/user-attachments/assets/b338e860-1162-4687-be8d-b4aef3ff8aeb" width="32%" />
-</p>
+![Bias Correction](https://github.com/user-attachments/assets/c760d4a8-1a16-424f-a24f-4449c8c04ff9)
 
-<p align="center">
-  <b>(a)</b> Bias correction of satellite rainfall using <b>Quantile Mapping</b>, where IMERG precipitation is statistically aligned with India Meteorological Department observations via 
-  R<sup>BC</sup> = F<sup>-1</sup><sub>IMD</sub>(F<sub>IMERG</sub>(R)), ensuring reliable extreme value estimation.
+![EVT Modeling](https://github.com/user-attachments/assets/09d1c585-526d-42ce-9a0b-b8c2a4d52e6f)
 
-  &nbsp;&nbsp;&nbsp;
+![Graph Diffusion](https://github.com/user-attachments/assets/b338e860-1162-4687-be8d-b4aef3ff8aeb)
 
-  <b>(b)</b> Return level comparison using <b>Generalized Pareto Distribution (Peaks Over Threshold)</b> and <b>Generalized Extreme Value</b> methods. The GPD-based approach is selected for downstream modeling as it provides more stable and physically consistent tail estimates for high return periods by directly modeling exceedances over threshold, which is critical for flood extremes.
+**(a) Bias Correction – Quantile Mapping**  
+IMERG rainfall is bias-corrected using IMD observations:  
+R^BC = F⁻¹_IMD(F_IMERG(R))  
 
-  &nbsp;&nbsp;&nbsp;
+**(b) Extreme Value Modeling (EVT)**  
+Return levels are estimated using GPD (POT) and GEV.  
+GPD is preferred for stable tail estimation of extremes.
 
-  <b>(c)</b> Spatial hazard fields derived from Extreme Value Theory (GPD-based) and enhanced using <b>graph-based diffusion</b>, where a spatial graph G = (V, E, W) encodes adjacency, distance, terrain, and drainage connectivity. The diffusion process 
-  H<sub>i</sub> ← αH<sub>i</sub> + (1 − α)∑<sub>j∈N(i)</sub> w<sub>ij</sub>H<sub>j</sub> propagates extreme rainfall across neighboring regions, significantly improving spatial coherence and reducing artifacts from pointwise EVT estimation. This leads to more physically consistent and reliable <b>ward-level rainfall hazard estimation</b> by capturing spatial dependencies and hydrological connectivity.
-</p>
+**(c) Graph-based Spatial Diffusion**  
+Spatial graph G = (V, E, W) encodes terrain and connectivity.  
+
+Hᵢ ← αHᵢ + (1 − α) Σ wᵢⱼ Hⱼ  
+
+This improves spatial coherence and produces realistic hazard fields.
 
 ## 4. Graph Conditioned DDPM (Denoising Diffusion Probabilistic Model) 
 <img width="679" height="725" alt="image" src="https://github.com/user-attachments/assets/50bd2c24-b010-4fc2-b769-e4051d4d0ecf" />
