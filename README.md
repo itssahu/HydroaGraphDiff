@@ -9,7 +9,7 @@ DEM (elevation, slope),
 ESA WorldCover (urbanization), 
 OSM (roads, hospitals), 
 WorldPop (population),
-CMIP6(MIROC6-historical, ssp245, ssp585)(2021–2050)
+CMIP6 (MIROC6-historical, ssp245, ssp585)(2021–2050)
 
 - **AOI (Area of Interest):** Hyderabad city and Musi river sub-basin (ward-level analysis)
 
