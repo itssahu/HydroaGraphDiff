@@ -26,12 +26,11 @@ Vulnerability is constructed from geographic features (terrain, infrastructure, 
 ## 3. Bias Correction, Extreme Value Theorem and Graph Diffusion
 
 Figure 2: Extreme rainfall modeling and spatial enhancement pipeline
+<img width="1500" height="787" alt="image" src="https://github.com/user-attachments/assets/9f59a9c5-5d77-436f-b24c-134f7b9dea89" />
+<img width="1086" height="855" alt="image" src="https://github.com/user-attachments/assets/dd6e9694-6b69-45e8-bc55-ed0705342e6e" />
+<img width="1500" height="675" alt="image" src="https://github.com/user-attachments/assets/14a0e4d7-01fc-4b15-9b21-13a833dd7f37" />
 
-<p align="center">
-  <img src="<img width="1500" height="787" alt="image" src="https://github.com/user-attachments/assets/c760d4a8-1a16-424f-a24f-4449c8c04ff9" />" width="32%" />
-  <img src="<img width="1086" height="855" alt="image" src="https://github.com/user-attachments/assets/09d1c585-526d-42ce-9a0b-b8c2a4d52e6f" />" width="32%" />
-  <img src="<img width="1500" height="675" alt="image" src="https://github.com/user-attachments/assets/b338e860-1162-4687-be8d-b4aef3ff8aeb" />" width="32%" />
-</p>
+
 
 <p align="center">
   <b>(a)</b> Bias correction of satellite rainfall using <b>Quantile Mapping</b>, where IMERG precipitation is statistically aligned with India Meteorological Department observations via 
