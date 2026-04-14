@@ -34,3 +34,22 @@ spatial consistency and smoothness. During reverse diffusion, the learned noise 
 atively removed to generate stochastic, spatially coherent hazard realizations consistent with both
 data and underlying spatial dependencies. 
 
+<img width="1712" height="325" alt="forward" src="https://github.com/user-attachments/assets/25040c5c-18c0-45fe-ac45-60c8bb9e644b" />
+
+<img width="1712" height="337" alt="reverse" src="https://github.com/user-attachments/assets/6fc7e116-6bc2-472f-91d7-4e5cce035793" />
+
+Figure 3. Diffusion dynamics in HydroGraphDiff for RL100 extreme rainfall scenario.
+Top: Forward diffusion progressively corrupts the EVT-conditioned hazard field into noise, de-
+stroying spatial structure as timestep increases. Bottom: Reverse diffusion using the Conditional
+Graph DDPM reconstructs spatially coherent hazard fields, guided by geospatial conditioning and
+graph-based constraints. The panels show standardized hazard anomaly fields, where positive
+values indicate above-average rainfall and negative values indicate below-average rainfall at each
+location. 
+
+Together, these results illustrate the core DDPM mechanism within the HydroGraphDiff framework. In the forward process, the structured EVT-conditioned hazard field $x_0$ is progressively corrupted by Gaussian noise according to a known schedule, producing intermediate noisy states $x_t \sim \mathcal{N}(\sqrt{\bar{\alpha}_t}x_0, (1-\bar{\alpha}_t)I)$. As $t$ increases, spatial structure is gradually destroyed, and the field approaches an isotropic Gaussian distribution.
+The Conditional Graph DDPM is trained to learn the noise function $\epsilon_\theta(x_t, t, c, G)$, which implicitly models the conditional distribution of noise given the corrupted field, diffusion timestep, geospatial conditioning variables ($c$), and spatial graph structure ($G$). The model leverages a UNet-style encoder–decoder to fuse multi-channel inputs ($x_t, c, pos$) while incorporating temporal embeddings and graph-aware spatial constraints via the Laplacian operator.
+During reverse diffusion, the model iteratively removes the estimated noise component from $x_t$, reconstructing spatial structure step-by-step. Importantly, stochasticity is preserved through injected noise $z \sim \mathcal{N}(0,I)$ at each timestep, ensuring that the reverse process samples from the learned data distribution rather than producing a single deterministic output. 
+As a result, the framework generates multiple stochastic hazard realizations $x_0^{(s)}$, each representing a physically consistent extreme rainfall scenario conditioned on terrain, urban characteristics, and climate-driven extremes. This enables probabilistic hazard modeling, capturing both spatial dependencies and uncertainty in extreme event generation.
+
+
+
