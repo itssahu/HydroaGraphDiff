@@ -23,31 +23,42 @@ Vulnerability is constructed from geographic features (terrain, infrastructure, 
 
 ## 3. Bias Correction, Extreme Value Theory and Graph Diffusion
 
+<table align="center">
+<tr>
+<td align="center">
+<img src="https://github.com/user-attachments/assets/c760d4a8-1a16-424f-a24f-4449c8c04ff9" height="260"><br>
+<b>(a) Bias Correction — Quantile Mapping</b>
+</td>
+
+<td align="center">
+<img src="https://github.com/user-attachments/assets/09d1c585-526d-42ce-9a0b-b8c2a4d52e6f" height="260"><br>
+<b>(b) Return Level Estimation (GPD vs GEV)</b>
+</td>
+
+<td align="center">
+<img src="https://github.com/user-attachments/assets/b338e860-1162-4687-be8d-b4aef3ff8aeb" height="260"><br>
+<b>(c) Graph-Based Spatial Diffusion of Hazard</b>
+</td>
+</tr>
+</table>
+
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/c760d4a8-1a16-424f-a24f-4449c8c04ff9" height="260"/>
-  <img src="https://github.com/user-attachments/assets/09d1c585-526d-42ce-9a0b-b8c2a4d52e6f" height="260"/>
-  <img src="https://github.com/user-attachments/assets/b338e860-1162-4687-be8d-b4aef3ff8aeb" height="260"/>
+IMERG rainfall is bias-corrected using India Meteorological Department observations via  
+<br>
+<b>R<sup>BC</sup> = F<sup>-1</sup><sub>IMD</sub>(F<sub>IMERG</sub>(R))</b>,  
+ensuring reliable estimation of extreme rainfall.
 </p>
 
 <p align="center">
-  <b>(a) Bias Correction — Quantile Mapping</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <b>(b) Return Level Estimation (GPD vs GEV)</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <b>(c) Graph-Based Spatial Diffusion of Hazard</b>
+Return levels are estimated using <b>Generalized Pareto Distribution (Peaks Over Threshold)</b> and <b>Generalized Extreme Value</b>, where the GPD-based approach is selected due to its stability in modeling tail extremes.
 </p>
 
 <p align="center">
-  IMERG rainfall is bias-corrected using India Meteorological Department observations via  
-  <br>
-  <b>R<sup>BC</sup> = F<sup>-1</sup><sub>IMD</sub>(F<sub>IMERG</sub>(R))</b>,  
-  ensuring reliable estimation of extreme rainfall.
-  <br><br>
-  Return levels are estimated using <b>Generalized Pareto Distribution (Peaks Over Threshold)</b> and <b>Generalized Extreme Value</b>, where the GPD-based approach is selected due to its stability in modeling tail extremes.
-  <br><br>
-  Spatial hazard fields derived from Extreme Value Theory are enhanced using <b>graph-based diffusion</b>, where a graph 
-  <b>G = (V, E, W)</b> encodes adjacency, distance, terrain, and drainage connectivity. The diffusion process  
-  <br>
-  <b>H<sub>i</sub> ← αH<sub>i</sub> + (1 − α) Σ<sub>j∈N(i)</sub> w<sub>ij</sub> H<sub>j</sub></b>  
-  propagates rainfall extremes across neighboring regions, improving spatial coherence and enabling more reliable <b>ward-level hazard estimation</b>.
+Spatial hazard fields derived from Extreme Value Theory are enhanced using <b>graph-based diffusion</b>, where a graph 
+<b>G = (V, E, W)</b> encodes adjacency, distance, terrain, and drainage connectivity. The diffusion process  
+<br>
+<b>H<sub>i</sub> ← αH<sub>i</sub> + (1 − α) Σ<sub>j∈N(i)</sub> w<sub>ij</sub> H<sub>j</sub></b>  
+propagates rainfall extremes across neighboring regions, improving spatial coherence and enabling more reliable <b>ward-level hazard estimation</b>.
 </p>
 
 
