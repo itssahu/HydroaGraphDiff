@@ -1,6 +1,6 @@
 # HydroaGraphDiff: A Generative AI–Driven Probabilistic Flood Risk & Catastrophe Modeling System (Hyderabad, Musi Basin)
 
-HydroGraphDiff is an end-to-end probabilistic flood risk and catastrophe modeling system developed for the Hyderabad (Musi basin) region. The project integrates geospatial data, extreme value theory (EVT), graph-based spatial modeling, and generative AI (diffusion models) to simulate flood hazards and quantify climate-driven financial risk at ward-level resolution.
+HydroGraphDiff is an end-to-end probabilistic flood risk and catastrophe modeling system developed for the Hyderabad (Musi basin) region. The project integrates geospatial data, extreme value theory (EVT), graph-based spatial modeling, and generative AI (Diffusion Models) to simulate flood hazards and quantify climate-driven financial risk at ward-level resolution.
 
 ## 1. Data Used
 IMERG (satellite rainfall), 
@@ -21,7 +21,7 @@ A spatial graph $G=(V,E,W)$ is constructed, where nodes $V$ represent grid cells
 The same graph $G$ is then reused within a Graph Conditioned DDPM, where it plays two roles: (i) as a conditioning structure guiding the model to learn spatial dependencies in hazard fields, and (ii) through a graph Laplacian regularization ($L = D - W$), which enforces smoothness and physical consistency by penalizing unrealistic spatial discontinuities. The diffusion model learns the conditional distribution of hazard fields and generates multiple stochastic realizations, thereby capturing uncertainty and variability in extreme rainfall patterns.
 Vulnerability is constructed from geographic features (terrain, infrastructure, population) into sensitivity, exposure, and adaptive capacity. Risk is computed as $R = H \times V$, with uncertainty, extreme probability, climate scenarios (SSP245/585), and loss exceedance curves (EP, PML, TVaR) providing a comprehensive probabilistic climate risk assessment.
 
-## 3. Graph Conditioned DDPM 
+## 3. Graph Conditioned DDPM (Denoising Diffusion Probabilistic Model) 
 <img width="679" height="725" alt="image" src="https://github.com/user-attachments/assets/50bd2c24-b010-4fc2-b769-e4051d4d0ecf" />
 
 Figure 2. Final architecture of the Graph Conditioned DDPM in HydroGraphDiff. A for-
