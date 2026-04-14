@@ -243,7 +243,7 @@ Structural vulnerability incorporates adaptive capacity into the risk formulatio
 Figure 5. Ward-level flood vulnerability components for Hyderabad, showing spatial patterns of adaptive capacity, sensitivity, potential impact, and resulting structural vulnerability.
 Insight: High vulnerability emerges where elevated sensitivity and exposure coincide with low adaptive capacity, highlighting flood risk hotspots along the Musi river corridor.
 
-## 6. Risk Formulation at ward level
+## 6. Flood Risk(Impact) Formulation at ward level
 
 The overall flood risk is computed by integrating the probabilistic hazard index derived from the generative ensemble with structural vulnerability:
 
@@ -264,132 +264,117 @@ This probabilistic definition of risk enables a more realistic representation of
 
 ## Flood Risk and Climate Impact Formulation
 
-This section describes the mathematical formulation used to generate baseline flood risk, extreme event likelihood, and future climate-driven risk evolution at the ward level.
-
 ---
 
-#  Baseline Risk and Likelihood
+### Flood Risk (Impact)
 
-###  Flood Risk (Impact)
+Hazard from generative ensembles:
 
-Hazard is derived from generative ensembles:
-
-H_w = 0.5·μ′_w + 0.35·(0.6·P90′_w + 0.4·P95′_w) + 0.15·σ′_w  
+**H<sub>w</sub> = 0.5·μ′<sub>w</sub> + 0.35·(0.6·P90′<sub>w</sub> + 0.4·P95′<sub>w</sub>) + 0.15·σ′<sub>w</sub>**
 
 where:
-- μ′_w = normalized mean hazard across scenarios for ward w  
-- σ′_w = normalized standard deviation (uncertainty)  
-- P90′_w, P95′_w = normalized 90th and 95th percentile hazard (tail extremes)  
+- μ′<sub>w</sub> = normalized mean hazard  
+- σ′<sub>w</sub> = normalized standard deviation  
+- P90′<sub>w</sub>, P95′<sub>w</sub> = tail quantiles  
+
+---
 
 Structural vulnerability:
 
-V_w = S_w · E_w · (1 − AC_w)
+**V<sub>w</sub> = S<sub>w</sub> · E<sub>w</sub> · (1 − AC<sub>w</sub>)**
 
-where:
-- S_w = sensitivity (terrain, drainage, imperviousness)  
-- E_w = exposure (population density)  
-- AC_w = adaptive capacity (roads, hospitals)  
+---
 
 Final risk:
 
-R_w = H_w · V_w  
-
-Normalized for visualization:
-
-R′_w = (R_w − min(R)) / (max(R) − min(R))
+**R<sub>w</sub> = H<sub>w</sub> · V<sub>w</sub>**
 
 ---
 
-###  Probability of Extreme Events (Likelihood)
+Normalization:
 
-Threshold (mean hazard):
+**R′<sub>w</sub> = (R<sub>w</sub> − min(R)) / (max(R) − min(R))**
 
-T_w = (1 / N) · Σ H_w^(k)
+---
+
+### Probability of Extreme Events
+
+Threshold:
+
+**T<sub>w</sub> = (1 / N) · Σ H<sub>w</sub><sup>(k)</sup>**
 
 Probability:
 
-P_w = (1 / N) · Σ 𝟙(H_w^(k) > T_w)
+**P<sub>w</sub> = (1 / N) · Σ I(H<sub>w</sub><sup>(k)</sup> > T<sub>w</sub>)**
 
 where:
-- H_w^(k) = hazard from kth generated scenario  
-- N = number of scenarios (~400)  
-- 𝟙(·) = indicator function (1 if condition true, else 0)  
+- H<sub>w</sub><sup>(k)</sup> = k-th scenario  
+- Σ = summation over scenarios  
+- I(·) = indicator function  
 
 ---
 
-#  Future Climate Risk Evolution
+##  Future Climate Risk Evolution (CMIP6 — MIROC6, SSP245, SSP585)
+
+### Climate Scenarios
+
+- **SSP245** → intermediate emissions (~2.5°C warming)  
+- **SSP585** → high emissions (~4–5°C warming)  
+
+Using **CMIP6 MIROC6 projections**, rainfall fields are scaled:
 
 ---
 
-###  Flood Risk under Climate Change
+###  Climate Scaling
 
-Climate scaling factor:
+**Δ<sub>w</sub> = Mean<sub>future</sub> / Mean<sub>historical</sub>**
 
-Δ_w = Mean_Future_Rainfall_w / Mean_Historical_Rainfall_w  
+**H<sub>w</sub><sup>future</sup> = H<sub>w</sub><sup>baseline</sup> · Δ<sub>w</sub>**
 
-Future hazard:
-
-H_w^future = H_w^baseline · Δ_w  
-
-Future risk:
-
-R_w^future = H_w^future · V_w  
+**R<sub>w</sub><sup>future</sup> = H<sub>w</sub><sup>future</sup> · V<sub>w</sub>**
 
 ---
 
 ###  Change in Risk
 
-ΔR_w = R_w^future − R_w^baseline  
+**ΔR<sub>w</sub> = R<sub>w</sub><sup>future</sup> − R<sub>w</sub><sup>baseline</sup>**
 
 ---
 
-###  Change in Extreme Event Probability
+###  Change in Probability
 
-ΔP_w = P_w^future − P_w^baseline  
-
----
-
-### Climate Amplification (Risk Ratio)
-
-A_w = R_w^future / R_w^baseline  
-
-Interpretation:
-- A_w > 1 → risk amplification due to climate change  
-- A_w < 1 → reduced risk  
+**ΔP<sub>w</sub> = P<sub>w</sub><sup>future</sup> − P<sub>w</sub><sup>baseline</sup>**
 
 ---
 
-###  Decision Zones (Actionable Risk)
+### Climate Amplification
 
-Decision score:
+**A<sub>w</sub> = R<sub>w</sub><sup>future</sup> / R<sub>w</sub><sup>baseline</sup>**
 
-D_w = R_w · P_w · A_w  
+---
+
+### Decision Score
+
+**D<sub>w</sub> = R<sub>w</sub> · P<sub>w</sub> · A<sub>w</sub>**
+
+---
 
 Thresholds:
 
-T_D = 80th percentile of D  
-T_R = 75th percentile of R  
+- T<sub>D</sub> = 80th percentile of D  
+- T<sub>R</sub> = 75th percentile of R  
+
+---
 
 Classification:
 
-- Act → D_w > T_D  
-- Monitor → D_w ≤ T_D and R_w > T_R  
-- Low Priority → otherwise  
+- **Act:** D<sub>w</sub> > T<sub>D</sub>  
+- **Monitor:** D<sub>w</sub> ≤ T<sub>D</sub> and R<sub>w</sub> > T<sub>R</sub>  
+- **Low Priority:** otherwise  
 
 ---
 
-# End-to-End Pipeline
+## Pipeline
 
-H^(k)(x, y) → H_w → R_w → P_w → A_w → D_w → Decision Zones
-
----
-
-# Interpretation
-
-- **Risk (R):** Impact combining hazard and structural vulnerability  
-- **Probability (P):** Likelihood of extreme events  
-- **Amplification (A):** Climate-driven escalation of risk  
-- **Decision Score (D):** Actionable prioritization metric  
-
-This framework integrates **generative uncertainty (DDPM), extreme value theory, spatial vulnerability, and climate projections**, enabling robust and decision-relevant flood risk assessment.
+**H<sup>(k)</sup>(x, y) → H<sub>w</sub> → R<sub>w</sub> → P<sub>w</sub> → A<sub>w</sub> → D<sub>w</sub>**
 
