@@ -26,12 +26,9 @@ Vulnerability is constructed from geographic features (terrain, infrastructure, 
 Figure 2: Extreme rainfall modeling and spatial enhancement pipeline
 
 <p align="center">
-  <img src="<img width="1500" height="787" alt="image" src="https://github.com/user-attachments/assets/c760d4a8-1a16-424f-a24f-4449c8c04ff9" />
-" width="32%" />
-  <img src="<img width="1086" height="855" alt="image" src="https://github.com/user-attachments/assets/09d1c585-526d-42ce-9a0b-b8c2a4d52e6f" />
-" width="32%" />
-  <img src="<img width="1500" height="675" alt="image" src="https://github.com/user-attachments/assets/b338e860-1162-4687-be8d-b4aef3ff8aeb" />
-" width="32%" />
+  <img src="https://github.com/user-attachments/assets/c760d4a8-1a16-424f-a24f-4449c8c04ff9" width="32%" />
+  <img src="https://github.com/user-attachments/assets/09d1c585-526d-42ce-9a0b-b8c2a4d52e6f" width="32%" />
+  <img src="https://github.com/user-attachments/assets/b338e860-1162-4687-be8d-b4aef3ff8aeb" width="32%" />
 </p>
 
 <p align="center">
