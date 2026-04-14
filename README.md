@@ -133,7 +133,7 @@ This enables **probabilistic hazard modeling**, capturing both:
 
 ### Hazard index calculation at ward-level
 
-Building on the stochastic hazard generation framework, the **Graph Conditioned DDPM** generates ensembles of spatially coherent rainfall hazard fields H^(k)(x, y) for each return level. These ensembles (typically ~400 scenarios per return level in our case) are then aggregated to the ward scale using area-weighted spatial integration, ensuring that sub-grid variability and spatial heterogeneity are preserved.
+Building on the stochastic hazard generation framework, the **Graph Conditioned DDPM** generates ensembles of spatially coherent rainfall hazard fields H<sup>(k)</sup>(x, y) for each return level. These ensembles (typically ~400 scenarios per return level in our case) are then aggregated to the ward scale using area-weighted spatial integration, ensuring that sub-grid variability and spatial heterogeneity are preserved.
 
 For each ward, the ensemble of scenario-wise hazard realizations is used to construct a probabilistic hazard representation capturing central tendency, tail behavior, and uncertainty. Specifically, a normalized hazard index is computed as:
 
