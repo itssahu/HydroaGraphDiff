@@ -737,3 +737,13 @@ By integrating **climate-conditioned risk amplification, stochastic loss modelin
 
 Most importantly, HydroGraphDiff lays the foundation for **AI-driven probabilistic climate risk digital twins**, where extensions such as multi-model climate ensembles, physics-informed learning, and dynamic exposure modeling can evolve it into **a scalable, real-time climate risk intelligence platform**.
 
+## Note on Code
+
+The notebooks reflect an experimental research workflow and are not fully modularized or production-ready.  
+The focus of this project is on methodology, modeling, and system design.
+
+## License
+
+This project is licensed under CC BY-NC 4.0.  
+Free for research and educational use.  
+Commercial use is not allowed without permission.
