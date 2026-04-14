@@ -650,19 +650,19 @@ Climate change amplifies flood risk nonlinearly, with disproportionate escalatio
 #  Key Innovations
 
 🔹 **Graph-Conditioned Generative Hazard Modeling**
-Introduced a Conditional Graph-Based Denoising Diffusion Probabilistic Model (DDPM) to generate spatially coherent extreme rainfall fields, capturing complex spatial dependencies beyond traditional statistical and deep learning approaches.
+Introduced a Conditional Graph-Based Denoising Diffusion Probabilistic Model (DDPM) to generate **spatially coherent extreme rainfall fields**, capturing complex spatial dependencies beyond traditional statistical and deep learning approaches.
 
 🔹 **Unified EVT–Generative Framework for Tail + Spatial Modeling**
-Integrated Extreme Value Theory (Peaks Over Threshold / GPD) with graph-based diffusion and DDPM to jointly model distribution tails and spatial structure, bridging classical hydrology and generative AI.
+Integrated **Extreme Value Theory (Peaks Over Threshold / GPD)** with graph-based diffusion and DDPM to **jointly model distribution tails and spatial structure**, bridging classical hydrology and generative AI.
 
 🔹 **Physics-Informed Spatial Graph Learning**
-Constructed a spatial graph G=(V,E,W) incorporating terrain, drainage, and connectivity, enabling physically consistent propagation of extreme hazards within a generative modeling framework.
+Constructed a spatial graph G=(V,E,W) incorporating terrain, drainage, and connectivity, enabling **physically consistent propagation of extreme hazards** within a generative modeling framework.
 
 🔹 **From Point Extremes to Spatial Extreme Fields**
-Moved beyond point-based EVT estimates to generate full spatial extreme rainfall fields, capturing spatial heterogeneity and dependencies critical for realistic flood modeling.
+Moved beyond point-based EVT estimates to generate **full spatial extreme rainfall fields**, capturing spatial heterogeneity and dependencies critical for realistic flood modeling.
 
 🔹 **Probabilistic Hazard Representation from Generative Ensembles**
-Developed a hazard formulation combining mean behavior, variability, and tail quantiles (P90–P95), enabling a unified representation of uncertainty and extreme risk.
+Developed a hazard formulation combining **mean behavior, variability, and tail quantiles (P90–P95)**, enabling a unified representation of **uncertainty and extreme risk**.
 
 ---
 
