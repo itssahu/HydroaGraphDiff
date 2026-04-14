@@ -243,6 +243,22 @@ Structural vulnerability incorporates adaptive capacity into the risk formulatio
 Figure 5. Ward-level flood vulnerability components for Hyderabad, showing spatial patterns of adaptive capacity, sensitivity, potential impact, and resulting structural vulnerability.
 Insight: High vulnerability emerges where elevated sensitivity and exposure coincide with low adaptive capacity, highlighting flood risk hotspots along the Musi river corridor.
 
+## 6. Risk Formulation at ward level
 
+The overall flood risk is computed by integrating the probabilistic hazard index derived from the generative ensemble with structural vulnerability:
 
+**R = H · V**
+
+where **H** represents the probabilistic hazard index capturing mean intensity, extreme behavior (P90–P95 tail), and uncertainty across generated scenarios.
+
+Expanding the formulation:
+
+**R = H · S · E · (1 − AC)**
+
+where:
+- **S** = Sensitivity (physical susceptibility)  
+- **E** = Exposure (population at risk)  
+- **AC** = Adaptive Capacity (infrastructure and resilience)  
+
+This probabilistic definition of risk enables a more realistic representation of climate-driven flood impacts by explicitly incorporating both **uncertainty in hazard generation** and **heterogeneity in vulnerability across wards**, leading to spatially explicit and decision-relevant risk estimates.
 
