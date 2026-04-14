@@ -103,5 +103,10 @@ This enables **probabilistic hazard modeling**, capturing both:
 - spatial dependencies  
 - uncertainty in extreme event generation
 
+  <img width="1500" height="695" alt="image" src="https://github.com/user-attachments/assets/f4500387-bc20-4323-a16d-3fd4e932b8c7" />
+
+  Figure 4. Graph-conditioned DDPM generates diverse stochastic realizations of RL100(100 year return level) extreme rainfall, capturing spatial variability and uncertainty across the urban flood landscape.
+
+
 
 
