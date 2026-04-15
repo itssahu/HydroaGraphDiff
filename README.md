@@ -63,7 +63,7 @@ data and underlying spatial dependencies.
 
 <img width="1712" height="337" alt="reverse" src="https://github.com/user-attachments/assets/6fc7e116-6bc2-472f-91d7-4e5cce035793" />
 
-Figure.4: Diffusion dynamics in HydroGraphDiff for RL100 extreme rainfall scenario.
+Figure.4: Diffusion dynamics in HydroGraphDiff for RL100 (100-year return level) extreme rainfall scenario.
 Top: Forward diffusion progressively corrupts the EVT-conditioned hazard field into noise, de-
 stroying spatial structure as timestep increases. Bottom: Reverse diffusion using the Conditional
 Graph DDPM reconstructs spatially coherent hazard fields, guided by geospatial conditioning and
