@@ -49,8 +49,7 @@ Figure.2: Extreme rainfall modeling and spatial enhancement pipeline
 ## 4. Graph Conditioned DDPM (Denoising Diffusion Probabilistic Model) 
 <img width="679" height="725" alt="image" src="https://github.com/user-attachments/assets/50bd2c24-b010-4fc2-b769-e4051d4d0ecf" />
 
-Figure.3: Final architecture of the Graph Conditioned DDPM in HydroGraphDiff. A for-
-ward diffusion process progressively corrupts EVT-conditioned hazard fields into Gaussian noise.
+Figure.3: Final architecture of the Graph Conditioned DDPM in HydroGraphDiff. A forward diffusion process progressively corrupts EVT-conditioned hazard fields into Gaussian noise.
 A UNet-based neural network learns to predict noise conditioned on geospatial features (c), posi-
 tional encoding, temporal embeddings (t), and spatial graph structure (G = (V, E, W )), where V
 denotes nodes (grid cells or wards), E represents spatial adjacency, and W encodes edge weights
