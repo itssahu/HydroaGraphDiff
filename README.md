@@ -50,8 +50,8 @@ Figure.2: Extreme rainfall modeling and spatial enhancement pipeline
 <img width="679" height="725" alt="image" src="https://github.com/user-attachments/assets/50bd2c24-b010-4fc2-b769-e4051d4d0ecf" />
 
 Figure.3: Final architecture of the Graph Conditioned DDPM in HydroGraphDiff. A forward diffusion process progressively corrupts EVT-conditioned hazard fields into Gaussian noise.
-A UNet-based neural network learns to predict noise conditioned on geospatial features (c), posi-
-tional encoding, temporal embeddings (t), and spatial graph structure (G = (V, E, W )), where V
+A UNet-based neural network learns to predict noise conditioned on geospatial features (c), 
+positional encoding, temporal embeddings (t), and spatial graph structure (G = (V, E, W )), where V
 denotes nodes (grid cells or wards), E represents spatial adjacency, and W encodes edge weights
 (distance, similarity, or terrain influence). A graph Laplacian regularization explicitly enforces
 spatial consistency and smoothness. During reverse diffusion, the learned noise distribution is iter-
@@ -63,8 +63,8 @@ data and underlying spatial dependencies.
 <img width="1712" height="337" alt="reverse" src="https://github.com/user-attachments/assets/6fc7e116-6bc2-472f-91d7-4e5cce035793" />
 
 Figure.4: Diffusion dynamics in HydroGraphDiff for RL100 (100-year return level) extreme rainfall scenario.
-Top: Forward diffusion progressively corrupts the EVT-conditioned hazard field into noise, de-
-stroying spatial structure as timestep increases. Bottom: Reverse diffusion using the Conditional
+Top: Forward diffusion progressively corrupts the EVT-conditioned hazard field into noise, 
+destroying spatial structure as timestep increases. Bottom: Reverse diffusion using the Conditional
 Graph DDPM reconstructs spatially coherent hazard fields, guided by geospatial conditioning and
 graph-based constraints. The panels show standardized hazard anomaly fields, where positive
 values indicate above-average rainfall and negative values indicate below-average rainfall at each
